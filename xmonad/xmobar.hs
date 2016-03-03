@@ -1,7 +1,7 @@
 -- see also http://ixday.github.io/pop-up-with-xmobar.html
 -- $ echo -e "\uf027"   -- to print UTF char to be used by Font Awesome
 
-Config { font = "xft:Ubuntu:size=8:antialias=true"
+Config { font = "xft:DejaVu Sans:size=8:antialias=true"
        , additionalFonts = ["xft:FontAwesome-10"]
        , bgColor = "black"
        , fgColor = "grey"

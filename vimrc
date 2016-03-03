@@ -1,10 +1,22 @@
 set nocompatible
-filetype plugin indent on
 syntax on
+filetype off  " turned on below, after Vundle runs
+
+" INTERFACE
 
 " Map <Leader> to ',' and use ';' instead of ':'
 nnoremap ; :
 let mapleader = ","
+
+" Wildmenu
+set wildmenu
+set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
+set wildmode=list:longest,full
+
+" Backspace behavior
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
 
 " GUI
 if has('gui_running')
@@ -14,22 +26,37 @@ if has('gui_running')
 	vmap <C-S-C> "+y
 endif
 
-"" PLUGINS
-"Vundle -- https://github.com/VundleVim/Vundle.vim
+
+"" PLUGINS -- Vundle, https://github.com/VundleVim/Vundle.vim
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
+Plugin 'Shougo/vimproc.vim'
 
 " Utility
 Plugin 'scrooloose/nerdtree'
-"Plugin 'kien/ctrlp.vim'
 
-" General programming
-Plugin 'scrooloose/syntastic'
-"Plugin 'scrooloose/nerdcommenter'
+Plugin 'tomtom/tlib_vim'  " snipmate dependency
+Plugin 'MarcWeber/vim-addon-mw-utils'  " snipmate dependency
+Plugin 'garbas/vim-snipmate'
+
+Plugin 'Shougo/neocomplete'
+
+Plugin 'godlygeek/tabular'
+Plugin 'ervandew/supertab'
+
+Plugin 'kien/ctrlp.vim'
 
 " Colors
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+
+" General programming
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdcommenter'
+
+" Haskell
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/neco-ghc'
 
 " C++
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -38,6 +65,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'vim-scripts/indentpython.vim'
 
 call vundle#end()
+filetype plugin indent on
 
 " Dracula theme
 hi Search ctermfg=016 guifg=#282a36
@@ -54,6 +82,12 @@ let g:syntastic_check_on_wq = 0
 
 " NERDTree
 map <Leader>n :NERDTreeToggle<CR>
+
+" NERDCommenter
+map <silent> <Leader>t :CtrlP()<CR>
+noremap <leader>b<space> :CtrlPBuffer<cr>
+let g:ctrlp_custom_ignore = '\v[\/]dist$'
+
 
 "" COMMANDS
 " Press F2 will save the file
@@ -113,14 +147,18 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
-" Set textwidth and disable wrapping
+" Set textwidth and wrap
 set tw=72
-set nowrap
+set wrap
+
+" Auto and smart indent
+set ai
+set si
 
 " Show line numbers
 set number
 
-" remove trailing whitespace on save --
+" Remove trailing whitespace on save --
 " http://stackoverflow.com/a/1618401/2043510
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")

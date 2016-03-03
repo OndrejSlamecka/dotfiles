@@ -19,7 +19,7 @@
 *color15: #ffffffffffff
 
 !! Fonts
-*font: DejaVu Sans Mono-16
+*font: xft:DejaVu Sans Mono:pixelsize=16
 Xft.dpi: 96
 Xft.antialias: true
 Xft.lcdfilter: lcddefault
@@ -27,9 +27,11 @@ Xft.autohint: false
 Xft.hinting: true
 Xft.hintstyle: hintslight
 
+!! Emacs
+emacs.font: DejaVu Sans Mono-16
+
 !! URxvt
 URxvt*termName: rxvt-unicode-256color
-URxvt.font: xft:DejaVu Sans Mono:pixelsize=16
 URxvt*mapAlert: true
 URxvt*saveLines: 8192
 URxvt*scrollBar: false
@@ -53,7 +55,7 @@ URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.clipboard.autocopy: true
 
 ! - Open link in firefox by left-clicking on it
-URxvt*url-launcher: /usr/bin/firefox
+URxvt*url-launcher: /usr/sbin/google-chrome-stable
 URxvt*matcher.button: 1
 URxvt*matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 

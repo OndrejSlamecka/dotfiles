@@ -39,19 +39,22 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList
     , ((0 , xF86XK_AudioMute), spawn toggleSound)
     ]
 
-barPP = defaultPP { ppCurrent = wrap "[" "]"
-                  , ppVisible = wrap "(" ")"
-                  , ppUrgent  = xmobarColor "red" "yellow"
-                  , ppLayout  = (\x -> "")
-                  }
+
+barPP :: PP
+barPP = def { ppCurrent = wrap "[" "]"
+            , ppVisible = wrap "(" ")"
+            , ppUrgent  = xmobarColor "red" "yellow"
+            , ppLayout  = (\x -> "")
+            }
+
 main = do
-    xmobar <- spawnPipe "pkill -f '^xmobar'; xmobar ~/.xmonad/xmobar.hs"
-    xmonad $ defaultConfig {
+    xmobar <- spawnPipe "pkill -f '^xmobar'; stack exec xmobar ~/.xmonad/xmobar.hs"
+    xmonad $ def{
       terminal = "urxvt"
     , normalBorderColor  = "#6272a4" -- or more classical: "#cccccc"
     , focusedBorderColor = "#ff5555" -- "#D32F2F"
     , layoutHook = avoidStruts $ smartBorders $ ResizableTall 1 (3/100) (1/2) []
-    , keys = myKeys <+> keys defaultConfig
+    , keys = myKeys <+> keys def
     , logHook = dynamicLogWithPP barPP { ppOutput = hPutStrLn xmobar }
     , modMask = mod4Mask -- use the Win key as mod
     }

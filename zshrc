@@ -49,7 +49,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras python ssh-agent sudo wd)
+plugins=(git git-extras python ssh-agent sudo wd archlinux)
 
 # User configuration
 
@@ -83,6 +83,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
+export EDITOR=vim
+
+# Turn on stack autocompletion
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+eval "$(stack --bash-completion-script stack)"
 
 # Opening new windows of urxvt with the same directory by shortcut
 # defined in .Xresources. This is done by urxvt extension cwd-spawn
