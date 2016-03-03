@@ -27,46 +27,57 @@ if has('gui_running')
 endif
 
 
-"" PLUGINS -- Vundle, https://github.com/VundleVim/Vundle.vim
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'Shougo/vimproc.vim'
+"" LOAD PLUGINS -- dein.vim
+set runtimepath^=/home/ondra/.vim/dein/repos/github.com/Shougo/dein.vim
+call dein#begin(expand('/home/ondra/.vim/dein'))
+
+call dein#add('Shougo/dein.vim')
+
+call dein#add('Shougo/vimproc.vim', { 'build': { 'linux': 'make' } })
 
 " Utility
-Plugin 'scrooloose/nerdtree'
+call dein#add('scrooloose/nerdtree')
 
-Plugin 'tomtom/tlib_vim'  " snipmate dependency
-Plugin 'MarcWeber/vim-addon-mw-utils'  " snipmate dependency
-Plugin 'garbas/vim-snipmate'
+call dein#add('tomtom/tlib_vim')  " snipmate dependency
+call dein#add('MarcWeber/vim-addon-mw-utils')  " snipmate dependency
+call dein#add('garbas/vim-snipmate')
 
-Plugin 'Shougo/neocomplete'
+call dein#add('Shougo/neocomplete')
 
-Plugin 'godlygeek/tabular'
-Plugin 'ervandew/supertab'
+call dein#add('godlygeek/tabular')
+call dein#add('ervandew/supertab')
 
-Plugin 'kien/ctrlp.vim'
+call dein#add('kien/ctrlp.vim')
 
 " Colors
-Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+call dein#add('zenorocha/dracula-theme', {'rtp': 'vim/'})
 
 " General programming
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'
+call dein#add('scrooloose/syntastic')
+call dein#add('scrooloose/nerdcommenter')
 
 " Haskell
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
+call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['hs']})
+call dein#add('eagletmt/neco-ghc', {'on_ft': ['hs']})
+call dein#add('neovimhaskell/haskell-vim', {'on_ft': ['hs']})
 
 " C++
-Plugin 'octol/vim-cpp-enhanced-highlight'
+call dein#add('octol/vim-cpp-enhanced-highlight', {'on_ft': ['cpp']})
 
 " Python
-Plugin 'vim-scripts/indentpython.vim'
+call dein#add('vim-scripts/indentpython.vim', {'on_ft': ['py']})
 
-call vundle#end()
+" End plugin definitions
+call dein#end()
 filetype plugin indent on
 
+" Install not installed plugins on startup
+if dein#check_install()
+  call dein#install()
+endif
+
+
+"" PLUGIN SETTINGS
 " Dracula theme
 hi Search ctermfg=016 guifg=#282a36
 

@@ -49,22 +49,11 @@ fi
 
 # Installing vim plugins
 echo "Installing vim plugins..."
-if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-vim +PluginInstall +qall
 
-# - vim: finish vimproc installation
-cd ~/.vim/bundle/vimproc.vim
-make
-
-# - vim: haskell syntax highlighting
-if [ ! -f ~/.vim/syntax/haskell.vim ]; then
-    mkdir -p ~/.vim/syntax && cd ~/.vim/syntax
-    wget -nv https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/haskell.vim
-    wget -nv https://raw.githubusercontent.com/sdiehl/haskell-vim-proto/master/vim/syntax/cabal.vim
-    mkdir -p ~/.vim/snippets && cd ~/.vim/snippets
-    wget -nv https://github.com/sdiehl/haskell-vim-proto/raw/master/vim/snippets/haskell.snippets
+if [ ! -d ~/.vim/dein ]; then
+    cd ~/tmp
+    wget https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+    sh ./installer.sh ~/.vim/dein
 fi
 
 

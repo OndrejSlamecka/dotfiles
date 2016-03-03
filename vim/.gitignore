@@ -1,4 +1,2 @@
-bundle/*
-syntax/*
-snippets/*
+dein/*
 .netrwhist
