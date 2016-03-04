@@ -1,6 +1,5 @@
 set nocompatible
 syntax on
-filetype off  " turned on below, after Vundle runs
 
 " INTERFACE
 
@@ -30,7 +29,6 @@ endif
 "" LOAD PLUGINS -- dein.vim
 set runtimepath^=/home/ondra/.vim/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('/home/ondra/.vim/dein'))
-
 call dein#add('Shougo/dein.vim')
 
 call dein#add('Shougo/vimproc.vim', { 'build': { 'linux': 'make' } })
@@ -50,7 +48,8 @@ call dein#add('ervandew/supertab')
 call dein#add('kien/ctrlp.vim')
 
 " Colors
-call dein#add('zenorocha/dracula-theme', {'rtp': 'vim/'})
+call dein#add('sinakarimi/dracula-theme', {'rtp': 'vim'})
+color dracula
 
 " General programming
 call dein#add('scrooloose/syntastic')
