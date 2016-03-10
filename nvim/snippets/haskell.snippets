@@ -1,6 +1,3 @@
-# sdiehl's snippets:
-# https://github.com/sdiehl/haskell-vim-proto/blob/master/vim/snippets/haskell.snippets
-
 snippet case
 	case ${1} of
 	  ${2:_} -> ${3:undefined}
@@ -56,7 +53,7 @@ snippet ff
 	foreign import ccall safe "${1:cfunction}" ${2:name}
 	    :: ${3:function}
 
-snippet pra
+snippet pra 
 	{-# LANGUAGE ${1} #-}
 
 snippet case
@@ -106,10 +103,10 @@ snippet containers
 	import qualified Data.Sequence     as Seq
 	import qualified Data.Set          as Set
 
-snippet str
+snippet str 
 	{-# LANGUAGE OverloadedStrings #-}
 
-snippet gadt
+snippet gadt 
 	{-# LANGUAGE GADTs #-}
 
 snippet rank
@@ -203,7 +200,7 @@ snippet nowarn
 snippet box
 	--------------------------------------------------------------------
 	-- |
-	-- Module    :
+	-- Module    :   
 	-- Copyright :  (c) <author> 2016
 	-- License   :  MIT
 	-- Maintainer:  <email>

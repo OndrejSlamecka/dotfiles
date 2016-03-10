@@ -5,7 +5,6 @@ setlocal expandtab
 setlocal softtabstop=2
 setlocal shiftwidth=2
 
-
 " == haskell-vim ==
 let g:haskell_enable_quantification = 1
 let g:haskell_enable_recursivedo = 1

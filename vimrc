@@ -1,3 +1,6 @@
+" NOTE: I am using neovim, this is just a basic .vimrc I am using for
+" quick setups
+
 set nocompatible
 syntax on
 
@@ -7,97 +10,9 @@ syntax on
 nnoremap ; :
 let mapleader = ","
 
-" Wildmenu
-set wildmenu
-set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
-set wildmode=list:longest,full
-
 " Backspace behavior
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-
-
-" GUI
-if has('gui_running')
-	set guioptions-=T " no toolbar
-	nmap <C-S-V> "+gP
-	imap <C-S-V> <ESC><C-V>i
-	vmap <C-S-C> "+y
-endif
-
-
-"" LOAD PLUGINS -- dein.vim
-set runtimepath^=/home/ondra/.vim/dein/repos/github.com/Shougo/dein.vim
-call dein#begin(expand('/home/ondra/.vim/dein'))
-call dein#add('Shougo/dein.vim')
-
-call dein#add('Shougo/vimproc.vim', { 'build': { 'linux': 'make' } })
-
-" Utility
-call dein#add('scrooloose/nerdtree')
-
-call dein#add('tomtom/tlib_vim')  " snipmate dependency
-call dein#add('MarcWeber/vim-addon-mw-utils')  " snipmate dependency
-call dein#add('garbas/vim-snipmate')
-
-call dein#add('Shougo/neocomplete')
-
-call dein#add('godlygeek/tabular')
-call dein#add('ervandew/supertab')
-
-call dein#add('kien/ctrlp.vim')
-
-" Colors
-call dein#add('sinakarimi/dracula-theme', {'rtp': 'vim'})
-color dracula
-
-" General programming
-call dein#add('scrooloose/syntastic')
-call dein#add('scrooloose/nerdcommenter')
-
-" Haskell
-call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['hs']})
-call dein#add('eagletmt/neco-ghc', {'on_ft': ['hs']})
-call dein#add('neovimhaskell/haskell-vim', {'on_ft': ['hs']})
-
-" C++
-call dein#add('octol/vim-cpp-enhanced-highlight', {'on_ft': ['cpp']})
-
-" Python
-call dein#add('vim-scripts/indentpython.vim', {'on_ft': ['py']})
-
-" End plugin definitions
-call dein#end()
-filetype plugin indent on
-
-" Install not installed plugins on startup
-if dein#check_install()
-  call dein#install()
-endif
-
-
-"" PLUGIN SETTINGS
-" Dracula theme
-hi Search ctermfg=016 guifg=#282a36
-
-" Syntastic post-load setup
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" NERDTree
-map <Leader>n :NERDTreeToggle<CR>
-
-" NERDCommenter
-map <silent> <Leader>t :CtrlP()<CR>
-noremap <leader>b<space> :CtrlPBuffer<cr>
-let g:ctrlp_custom_ignore = '\v[\/]dist$'
-
 
 "" COMMANDS
 " Press F2 will save the file

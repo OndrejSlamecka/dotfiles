@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if test "x$XDG_CONFIG_HOME" = "x"; then
+    XDG_CONFIG_HOME=$HOME/.config
+    export XDG_CONFIG_HOME
+fi
+
 xrdb -merge ~/.Xresources  # X settings
 xset +fp ~/.fonts/  # X fonts
 numlockx &  # Toggle numlock
