@@ -12,7 +12,7 @@ let g:haskell_enable_arrowsyntax = 1
 let g:haskell_enable_pattern_synonyms = 1
 let g:haskell_enable_typeroles = 1
 let g:haskell_enable_static_pointers = 1
-
+let g:haskell_classic_highlighting = 1
 
 " == ghc-mod ==
 map <silent> tq :GhcModType<CR>

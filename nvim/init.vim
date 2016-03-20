@@ -3,12 +3,16 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " INTERFACE
 
-" No mouse
-set mouse-=a
+" Ruler
+set ruler
 
-" Map <Leader> to ',' and use ';' instead of ':'
-nnoremap ; :
-let mapleader = ","
+" Padding when scrolling
+set scrolloff=6
+
+" Map <Leader> to ',' and use ';' instead of ':', ';;' instead of ';'
+let mapleader=","
+nmap ; :
+noremap ;; ;
 
 " Wildmenu
 set wildmenu
@@ -106,9 +110,7 @@ imap <F2> <ESC>:w<CR>i
 " Press F3 to toggle paste mode
 set pastetoggle=<F3>
 
-" System clipboard copy and paste with control-shift-[c|v]
-nmap <C-S-V> "+gP
-imap <C-S-V> <ESC><C-V>i
+" System clipboard copy with control-shift-c
 vmap <C-S-C> "+y
 
 " Medium speed scrolling with shift and arrows
