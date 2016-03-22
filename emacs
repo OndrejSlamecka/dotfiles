@@ -38,6 +38,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-coq-live-on-the-edge t)
+ '(coq-one-command-per-line nil)
  '(proof-electric-terminator-enable t)
  '(proof-next-command-insert-space t)
  '(safe-local-variable-values
