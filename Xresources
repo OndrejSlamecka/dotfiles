@@ -19,7 +19,7 @@
 *color15: #ffffffffffff
 
 !! Fonts
-*font: xft:DejaVu Sans Mono:pixelsize=16
+*font: xft:DejaVu Sans Mono for Powerline:pixelsize=16
 Xft.dpi: 96
 Xft.antialias: true
 Xft.lcdfilter: lcddefault
