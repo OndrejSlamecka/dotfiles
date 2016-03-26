@@ -23,13 +23,32 @@ set wildmode=list:longest,full
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" No status line
-set laststatus=0
+" No status line -- unfortunately this setting is making problems with
+" lopen and lclose calls (done by neomake for example)
+" set laststatus=0
 
-" GUI
-if has('gui_running')
-    set guioptions-=T " no toolbar
-endif
+" Search
+set incsearch
+set hlsearch
+
+" Carry over indenting from previous line
+set autoindent
+
+" Default indentation
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
+" Set textwidth and wrap
+set tw=72
+set wrap
+
+" Auto and smart indent
+set ai
+set si
+
+" Show line numbers
+set number
 
 
 "" LOAD PLUGINS -- dein.vim
@@ -40,6 +59,7 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc.vim', { 'build': { 'linux': 'make' } })
 
 " Utility
+call dein#add('vim-airline/vim-airline')
 call dein#add('scrooloose/nerdtree')
 
 call dein#add('tomtom/tlib_vim')  " snipmate dependency
@@ -58,7 +78,7 @@ call dein#add('OndrejSlamecka/dracula-theme-vim')
 colorscheme dracula
 
 " General programming
-call dein#add('scrooloose/syntastic')
+call dein#add('benekastah/neomake')
 call dein#add('scrooloose/nerdcommenter')
 
 " Haskell
@@ -72,6 +92,9 @@ call dein#add('octol/vim-cpp-enhanced-highlight', {'on_ft': ['cpp']})
 " Python
 call dein#add('vim-scripts/indentpython.vim', {'on_ft': ['py']})
 
+" LaTeX
+call dein#add('lervag/vimtex', {'on_ft': ['tex']})
+
 " End plugin definitions
 call dein#end()
 filetype plugin indent on
@@ -83,15 +106,12 @@ endif
 
 
 "" PLUGIN SETTINGS
-" Syntastic post-load setup
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Neomake
+let g:neomake_open_list = 2
+autocmd! BufWritePost,BufEnter * Neomake
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" Airline
+let g:airline_powerline_fonts = 1
 
 " NERDTree
 map <Leader>n :NERDTreeToggle<CR>
@@ -107,8 +127,8 @@ let g:ctrlp_custom_ignore = '\v[\/]dist$'
 nmap <F2> :w<CR>
 imap <F2> <ESC>:w<CR>i
 
-" Press F3 to toggle paste mode
-set pastetoggle=<F3>
+" q also closes location list (usually opened by neomake)
+cabbrev q lclose \| q
 
 " System clipboard copy with control-shift-c
 vmap <C-S-C> "+y
@@ -135,44 +155,24 @@ nmap <Space> i <Esc>
 " <Ctrl-l> redraws the screen and removes any search highlighting
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
+" Switching tabs
+nmap <F5> :tabp<CR>
+nmap <F6> :tabn<CR>
+
+" Split navigation
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+
+" Switching sides in diff mode
 if &diff " in diff mode
-    " use F5 or F6 to change sides
-    nmap <F5> <C-w><C-w>
-    nmap <F6> <C-w><C-w>
-else " not in diff mode
-    " in normal mode F5 will go to the previous tab
-    nmap <F5> :tabp<CR>
-    " in normal mode F6 will go to the next tab
-    nmap <F6> :tabn<CR>
+    nmap <C-h> <C-w><C-w>
+    nmap <C-l> <C-w><C-w>
 endif
 
 " Write with `sudo` by issuing the :w!! command
 cmap w!! w !sudo tee > /dev/null %
-
-"" DISPLAY & FORMATTING
-
-" Search
-set incsearch
-set hlsearch
-
-" Carry over indenting from previous line
-set autoindent
-
-" Default indentation
-set expandtab
-set tabstop=4
-set shiftwidth=4
-
-" Set textwidth and wrap
-set tw=72
-set wrap
-
-" Auto and smart indent
-set ai
-set si
-
-" Show line numbers
-set number
 
 " Remove trailing whitespace on save --
 " http://stackoverflow.com/a/1618401/2043510

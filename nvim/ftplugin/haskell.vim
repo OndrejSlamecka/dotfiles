@@ -5,6 +5,7 @@ setlocal expandtab
 setlocal softtabstop=2
 setlocal shiftwidth=2
 
+
 " == haskell-vim ==
 let g:haskell_enable_quantification = 1
 let g:haskell_enable_recursivedo = 1
@@ -13,6 +14,7 @@ let g:haskell_enable_pattern_synonyms = 1
 let g:haskell_enable_typeroles = 1
 let g:haskell_enable_static_pointers = 1
 let g:haskell_classic_highlighting = 1
+
 
 " == ghc-mod ==
 map <silent> tq :GhcModType<CR>
@@ -33,6 +35,8 @@ else " no gui
   endif
 endif
 
+let g:haskellmode_completion_ghc = 1
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " == neco-ghc ==
 

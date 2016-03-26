@@ -3,13 +3,25 @@ snippet for
 		${4}
 	}
 
+snippet if
+	if (${1}) {
+		${2}
+	}
+
 snippet compet
 	#include <iostream>
+	#include <algorithm>
 	#include <vector>
+	#include <list>
+	#include <map>
+
+	#define uint unsigned int
 
 	using namespace std;
 
-	int main(int argc, char *argv[])
-	{
+	int main(int argc, char *argv[]) {
 		${1}
+
+		return 0;
 	}
+

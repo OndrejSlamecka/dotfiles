@@ -5,6 +5,7 @@ set nocompatible
 syntax on
 
 " INTERFACE
+colorscheme desert
 
 " Map <Leader> to ',' and use ';' instead of ':'
 nnoremap ; :
@@ -13,6 +14,29 @@ let mapleader = ","
 " Backspace behavior
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
+
+" Search
+set incsearch
+set hlsearch
+
+" Carry over indenting from previous line
+set autoindent
+
+" Default indentation
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
+" Set textwidth and wrap
+set tw=72
+set wrap
+
+" Auto and smart indent
+set ai
+set si
+
+" Show line numbers
+set number
 
 "" COMMANDS
 " Press F2 will save the file
@@ -57,31 +81,6 @@ endif
 
 " Write with `sudo` by issuing the :w!! command
 cmap w!! w !sudo tee > /dev/null %
-
-"" DISPLAY & FORMATTING
-
-" Search
-set incsearch
-set hlsearch
-
-" Carry over indenting from previous line
-set autoindent
-
-" Default indentation
-set expandtab
-set tabstop=4
-set shiftwidth=4
-
-" Set textwidth and wrap
-set tw=72
-set wrap
-
-" Auto and smart indent
-set ai
-set si
-
-" Show line numbers
-set number
 
 " Remove trailing whitespace on save --
 " http://stackoverflow.com/a/1618401/2043510
