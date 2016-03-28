@@ -16,7 +16,8 @@ unclutter &  # Hide mouse when unused
 dropbox-cli start  # Start dropbox syncing
 redshift &  # Start redshift
 
-feh --bg-scale ~/Dropbox/WP/nebula.jpg
-xautolock -t 10 -locker slock  # Lock screen after 10 inactive minutes
+feh --bg-scale ~/Dropbox/WP/nebula.jpg  # Set background
+xautolock -locker slock & # Lock screen after 10 minutes of inactivity
+
 stack exec xmonad
 
