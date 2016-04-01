@@ -71,7 +71,7 @@ call dein#add('Shougo/neocomplete')
 call dein#add('godlygeek/tabular')
 call dein#add('ervandew/supertab')
 
-call dein#add('kien/ctrlp.vim')
+call dein#add('ctrlpvim/ctrlp.vim')
 
 " Colors
 call dein#add('OndrejSlamecka/dracula-theme-vim')
@@ -127,9 +127,6 @@ let g:ctrlp_custom_ignore = '\v[\/]dist$'
 nmap <F2> :w<CR>
 imap <F2> <ESC>:w<CR>i
 
-" q also closes location list (usually opened by neomake)
-cabbrev q lclose \| q
-
 " System clipboard copy with control-shift-c
 vmap <C-S-C> "+y
 
@@ -173,6 +170,13 @@ endif
 
 " Write with `sudo` by issuing the :w!! command
 cmap w!! w !sudo tee > /dev/null %
+
+" q also closes quickfix window
+" http://stackoverflow.com/a/7477056
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && (getbufvar(winbufnr(winnr()), "&buftype") == "quickfix")|q|endif
+aug END
 
 " Remove trailing whitespace on save --
 " http://stackoverflow.com/a/1618401/2043510
