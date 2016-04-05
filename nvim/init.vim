@@ -60,7 +60,9 @@ call dein#add('Shougo/vimproc.vim', { 'build': { 'linux': 'make' } })
 
 " Utility
 call dein#add('vim-airline/vim-airline')
+
 call dein#add('scrooloose/nerdtree')
+call dein#add('ctrlpvim/ctrlp.vim')
 
 call dein#add('tomtom/tlib_vim')  " snipmate dependency
 call dein#add('MarcWeber/vim-addon-mw-utils')  " snipmate dependency
@@ -70,8 +72,6 @@ call dein#add('Shougo/neocomplete')
 
 call dein#add('godlygeek/tabular')
 call dein#add('ervandew/supertab')
-
-call dein#add('ctrlpvim/ctrlp.vim')
 
 " Colors
 call dein#add('OndrejSlamecka/dracula-theme-vim')
