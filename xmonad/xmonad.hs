@@ -5,7 +5,9 @@ import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.Run (spawnPipe, hPutStrLn)
+import qualified XMonad.StackSet as W (greedyView, shift)
 import Graphics.X11.ExtraTypes.XF86 -- multimedia keys
+import Graphics.X11.ExtraTypes.XorgDefault -- zcaron and similar Czech keys
 
 
 -- Volume
@@ -43,7 +45,7 @@ main = do
       where tall = ResizableTall 1 (3/100) (1/2) []
             wide = Mirror tall
 
-    myKeys XConfig {XMonad.modMask = modm} = Data.Map.fromList
+    myKeys conf@XConfig {XMonad.modMask = modm} = Data.Map.fromList $
       [
       -- resizableTile, use mod-a and mod-z
         ((modm,                 xK_a), sendMessage MirrorShrink)
@@ -57,6 +59,13 @@ main = do
       , ((0, xF86XK_AudioRaiseVolume), volume Increase)
       , ((0,        xF86XK_AudioMute), volume Toggle)
       ]
+      ++
+      -- Switching workspaces with my Czech keyboard
+      -- (+ěšřžýáíé instead of 1234567890)
+      [((m .|. modm, k), windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_plus, xK_ecaron, xK_scaron, xK_ccaron, xK_rcaron, xK_zcaron, xK_yacute, xK_aacute, xK_iacute, xK_eacute]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+
 
     myLogHook bar = dynamicLogWithPP $ def
       { ppCurrent = wrap "[" "]"

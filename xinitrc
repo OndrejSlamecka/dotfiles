@@ -9,22 +9,18 @@ xrdb -merge ~/.Xresources  # X settings
 xset +fp ~/.fonts/  # X fonts
 
 numlockx &  # Toggle numlock
-xmodmap ~/.Xmodmap  # Change some key bindings
+xkbcomp -I$HOME/dotfiles/xkb $HOME/dotfiles/xkb/cz-prog.xkb $DISPLAY -w 3
+# Change some key bindings (this is too subjective to be included in a keyboard layout)
+xmodmap ~/.Xmodmap
+
 unclutter &  # Hide mouse when unused
 
 [ ! -s ~/.mpd/pid ] && mpd  # Music player daemon
 dropbox-cli start  # Start dropbox syncing
+
+xset dpms 0 0 900  # Turn off the display after 15 minutes
 redshift &  # Start redshift
 
 feh --bg-scale ~/Dropbox/WP/nebula.jpg  # Set background
-
-xset dpms 0 0 900  # Turn off the display after 15 minutes
-
-# xset s 600  # 10 minutes to lock the screen
-# xss-lock slock &
-
-# Alternatively use dimming (the dim-screen script needs configuration)
-# xset s 300 300  # 300 seconds to dim, next 300 to lock
-# xss-lock -n 'sh /usr/share/doc/xss-lock/dim-screen.sh' -- slock &
 
 stack exec xmonad
