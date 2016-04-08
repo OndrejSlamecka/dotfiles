@@ -84,7 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # Turn on stack autocompletion
 autoload -U +X compinit && compinit

@@ -1,8 +1,9 @@
-setlocal tabstop=4
-setlocal expandtab
-setlocal softtabstop=4
 setlocal shiftwidth=4
-setlocal shiftround
+setlocal tabstop=4
+setlocal softtabstop=4
+setlocal expandtab
+
+setlocal cindent
 
 let g:neomake_cpp_gcc_maker = {
             \ 'args': ['-std=c++11']

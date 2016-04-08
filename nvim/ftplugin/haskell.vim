@@ -5,6 +5,13 @@ setlocal expandtab
 setlocal softtabstop=2
 setlocal shiftwidth=2
 
+" Conceal
+set conceallevel=2
+hi link hsNiceOperator Operator
+hi! link Conceal Operator
+syntax match hsNiceOperator /\s\.\s/ms=s+1,me=e-1 conceal cchar=∘
+syntax match hsNiceOperator "\\\ze[[:alpha:][:space:]_([]" conceal cchar=λ
+
 
 " == haskell-vim ==
 let g:haskell_enable_quantification = 1
