@@ -63,7 +63,7 @@ main = do
       -- Switching workspaces with my Czech keyboard
       -- (+ěšřžýáíé instead of 1234567890)
       [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_plus, xK_ecaron, xK_scaron, xK_ccaron, xK_rcaron, xK_zcaron, xK_yacute, xK_aacute, xK_iacute, xK_eacute]
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_uring, xK_ecaron, xK_scaron, xK_ccaron, xK_rcaron, xK_zcaron, xK_yacute, xK_aacute, xK_iacute, xK_eacute]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 

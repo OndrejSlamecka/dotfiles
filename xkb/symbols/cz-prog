@@ -5,7 +5,7 @@ xkb_symbols "basic" {
 
     include "us"
 
-    key <AE01> { [ plus,    exclam,       1,  dead_tilde ] };
+    key <AE01> { [ uring,   exclam,       1,  Uring ] };
     key <AE02> { [ ecaron,  at,           2,  Ecaron ] };
     key <AE03> { [ scaron,  numbersign,   3,  dead_circumflex ] };
     key <AE04> { [ ccaron,  dollar,       4,  dead_breve ] };
