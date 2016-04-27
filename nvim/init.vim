@@ -53,10 +53,10 @@ set number
 
 "" LOAD PLUGINS -- dein.vim
 set runtimepath^=/home/ondra/.config/nvim/dein/repos/github.com/Shougo/dein.vim
-call dein#begin(expand('/home/ondra/.config/nvim/dein'))
+call dein#begin(expand('~/.cache/dein'))
 call dein#add('Shougo/dein.vim')
 
-call dein#add('Shougo/vimproc.vim', { 'build': { 'linux': 'make' } })
+call dein#add('Shougo/vimproc.vim', { 'build': 'make' })
 
 " Utility
 call dein#add('vim-airline/vim-airline')
