@@ -3,3 +3,4 @@ xmonad/xmonad.o
 xmonad/xmonad-x86_64-linux
 xmonad/xmonad.log
 xmonad/xmonad.errors
+nvim/.init.vim-rplugin~

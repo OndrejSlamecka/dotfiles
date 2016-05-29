@@ -1,5 +1,6 @@
 syntax on
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " remove after neovim update
+" set termguicolors " enable, see above
 
 " INTERFACE
 
@@ -60,6 +61,7 @@ call dein#add('Shougo/vimproc.vim', { 'build': 'make' })
 
 " Utility
 call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
 
 call dein#add('scrooloose/nerdtree')
 call dein#add('ctrlpvim/ctrlp.vim')
@@ -78,7 +80,7 @@ call dein#add('OndrejSlamecka/dracula-theme-vim')
 colorscheme dracula
 
 " General programming
-call dein#add('benekastah/neomake')
+"call dein#add('benekastah/neomake')
 call dein#add('scrooloose/nerdcommenter')
 
 " Haskell
@@ -108,10 +110,11 @@ endif
 "" PLUGIN SETTINGS
 " Neomake
 let g:neomake_open_list = 2
-autocmd! BufWritePost,BufEnter * Neomake
+"autocmd! BufWritePost,BufEnter * Neomake
 
 " Airline
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#whitespace#enabled = 0
 
 " NERDTree
 map <Leader>n :NERDTreeToggle<CR>

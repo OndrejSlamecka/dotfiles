@@ -2,6 +2,9 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
+(require 'evil)
+(evil-mode 1)
+
 ;; general
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
@@ -10,22 +13,20 @@
 (setq scroll-step            1
       scroll-conservatively  10000)
 
-(setq default-input-method "TeX")
+; http://stackoverflow.com/questions/15180175/how-to-disable-underscore-subscripting-in-emacs-tex-input-method
+(register-input-method
+ "TeX, no (sub|super)scripts" "UTF-8" 'quail-use-package
+ "\\" "The TeX input method but without _ for subscript and ^ for superscript."
+ "~/dotfiles/emacs.d/latin-ltx_subsuperscript.el.gz")
+
+(setq default-input-method "TeX, no (sub|super)scripts")
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
 
-;; duplicating a line -- http://stackoverflow.com/a/88828/2043510
-(defun duplicate-line()
-  (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (open-line 1)
-  (next-line 1)
-  (yank)
-)
-
-; unfortunately PG has its own C-c C-d
-(global-set-key (kbd "C-c C-d") 'duplicate-line)
+; Ctrl-c/v for copy/paste in Emacs mode
+(cua-mode t)
+    (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
+    (transient-mark-mode 1)               ;; No region when it is not highlighted
+    (setq cua-keep-region-after-copy t)
 
 ;; Coq
 (require 'proof-site "~/.emacs.d/lisp/PG/generic/proof-site")
@@ -60,3 +61,21 @@
   (define-key coq-mode-map "\M-n"
     #'proof-assert-next-command-interactive)
 )
+
+; Activating the default input method
+; http://emacs.stackexchange.com/questions/418/setting-and-activating-the-default-input-method
+(defvar use-default-input-method t)
+(make-variable-buffer-local 'use-default-input-method)
+(defun activate-default-input-method ()
+  (interactive)
+  (if use-default-input-method
+    (activate-input-method default-input-method)
+    (inactivate-input-method)
+    )
+  )
+(add-hook 'after-change-major-mode-hook 'activate-default-input-method)
+(add-hook 'minibuffer-setup-hook 'activate-default-input-method)
+(defun inactivate-default-input-method ()
+  (setq use-default-input-method nil))
+(add-hook 'c-mode-hook 'inactivate-default-input-method)
+

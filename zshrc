@@ -83,51 +83,16 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
 export EDITOR=nvim
+
+alias xclipb="xclip -selection clipboard"
 
 # Turn on stack autocompletion
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 eval "$(stack --bash-completion-script stack)"
 
-# Opening new windows of urxvt with the same directory by shortcut
-# defined in .Xresources. This is done by urxvt extension cwd-spawn
-# and it needs the lines below.
-# Note that it also needs few lines in .ssh config, see
-# https://github.com/atweiden/urxvt-cwd-spawn/blob/master/cwd-spawn
-cwd_to_urxvt() {
-    [[ "$TERM" == "rxvt-unicode-256color" ]] || return
-
-    local update="\0033]777;cwd-spawn;path;$PWD\0007"
-
-    case $TERM in
-    screen*)
-    # pass through to parent terminal emulator
-        update="\0033P$update\0033\\";;
-    esac
-
-    echo -ne "$update"
-}
-
-cwd_to_urxvt # execute upon startup to set initial directory
-
-ssh_connection_to_urxvt() {
-    [[ "$TERM" == "rxvt-unicode-256color" ]] || return
-
-    # don't propagate information to urxvt if ssh is used non-interactive
-    [ -t 0 ] || [ -t 1 ] || return
-
-    local update="\0033]777;cwd-spawn;ssh;$1\0007"
-
-    case $TERM in
-    screen*)
-    # pass through to parent terminal emulator
-        update="\0033P$update\0033\\";;
-    esac
-
-    echo -ne "$update"
-}
-
-chpwd_functions=(${chpwd_functions} cwd_to_urxvt)
-
+# Enable opening of new terminal in the same directory with termite
+if [ -f /etc/profile.d/vte.sh ]; then
+    source /etc/profile.d/vte.sh
+fi
