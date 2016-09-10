@@ -39,7 +39,7 @@ echo "
 "
 
 # Dotfiles in $HOME
-dotfiles="xmonad Xresources xkb Xmodmap xinitrc urxvt fonts"
+dotfiles="xmonad Xresources xkb Xmodmap start-xmonad.sh urxvt fonts"
 dotfiles="$dotfiles oh-my-zsh zshrc vimrc"
 dotfiles="$dotfiles emacs latexmkrc gitconfig ghci"
 

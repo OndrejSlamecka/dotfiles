@@ -23,4 +23,5 @@ redshift &  # Start redshift
 
 feh --bg-scale ~/Dropbox/WP/nebula.jpg  # Set background
 
-stack exec xmonad
+#stack exec xmonad
+./.local/bin/xmonad
