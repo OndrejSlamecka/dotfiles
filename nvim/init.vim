@@ -76,8 +76,8 @@ call dein#add('godlygeek/tabular')
 call dein#add('ervandew/supertab')
 
 " Colors
-call dein#add('OndrejSlamecka/dracula-theme-vim')
-colorscheme dracula
+call dein#add('dracula/vim')
+color dracula
 
 " General programming
 call dein#add('benekastah/neomake')
