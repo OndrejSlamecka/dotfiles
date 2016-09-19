@@ -63,23 +63,6 @@ xrdb -merge ~/.Xresources
 fc-cache ~/.fonts/
 
 
-# Add cwd-spawn support for ssh connections
-echo "Making cwd-spawn work with ssh connections..."
-mkdir -p ~/.ssh
-if [ ! -f ~/.ssh/config ]; then
-    touch ~/.ssh/config
-    chmod 600 ~/.ssh/config
-fi
-
-sshconfig='Host *
-    PermitLocalCommand yes
-    LocalCommand ssh_connection_to_urxvt "%r %h %p"'
-
-if ! grep -q 'LocalCommand ssh_connection_to_urxvt "%r %h %p"' ~/.ssh/config; then
-    echo "$sshconfig" >> ~/.ssh/config
-fi
-
-
 # Installing nvim plugins
 echo "Installing nvim plugins..."
 
