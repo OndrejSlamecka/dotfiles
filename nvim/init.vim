@@ -80,7 +80,7 @@ call dein#add('OndrejSlamecka/dracula-theme-vim')
 colorscheme dracula
 
 " General programming
-"call dein#add('benekastah/neomake')
+call dein#add('benekastah/neomake')
 call dein#add('scrooloose/nerdcommenter')
 
 " Haskell
@@ -110,7 +110,7 @@ endif
 "" PLUGIN SETTINGS
 " Neomake
 let g:neomake_open_list = 2
-"autocmd! BufWritePost,BufEnter * Neomake
+autocmd! BufWritePost,BufEnter * Neomake
 
 " Airline
 let g:airline_powerline_fonts = 1
