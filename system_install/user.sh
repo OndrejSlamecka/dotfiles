@@ -9,8 +9,9 @@ fi
 mkdir -p $HOME/tmp $HOME/.config $HOME/.local/bin $HOME/.cache
 mkdir -p $HOME/Music
 
-rm $HOME/.zshrc # dotfiles have one, the current one is prob. empty
-git clone https://github.com/OndrejSlamecka/dotfiles.git $HOME/dotfiles && cd $HOME/dotfiles && ./install.sh
+rm -f $HOME/.zshrc # dotfiles have one, the current one is prob. empty
+git clone https://github.com/OndrejSlamecka/dotfiles.git $HOME/dotfiles
+cd $HOME/dotfiles && sh install.sh
 
 ## AUR helper
 # Pacaur -- run as user, first fetch Dave Reisner's key to verify cower
@@ -30,12 +31,12 @@ cd "$HOME" && rm -rf "$buildroot"
 pacaur -Syu --aur
 
 # AUR packages
-pacaur --quiet --noconfirm --needed -S libtinfo  # Needed for Haskell Stack
-pacaur --quiet --noconfirm --needed -S redshift-minimal
-pacaur --quiet --noconfirm --needed -S unclutter-xfixes-git  # hides the mouse pointer when not used
-pacaur --quiet --noconfirm --needed -S powerline-fonts-git  # used by vim airline plugin
-pacaur --quiet --noconfirm --needed -S google-chrome
-pacaur --quiet --noconfirm --needed -S dropbox dropbox-cli
+pacaur --noconfirm --needed -S libtinfo  # Needed for Haskell Stack
+pacaur --noconfirm --needed -S redshift-minimal
+pacaur --noconfirm --needed -S unclutter-xfixes-git  # hides the mouse pointer when not used
+pacaur --noconfirm --needed -S powerline-fonts-git  # used by vim airline plugin
+pacaur --noconfirm --needed -S google-chrome
+pacaur --noconfirm --needed -S dropbox dropbox-cli
 
 
 ## Configure mpd (we're using per-user configuration)
@@ -72,7 +73,7 @@ stack setup
 stack update
 
 # Local installation of xmonad and xmobar
-stack install X11-xft xmonad xmonad-contrib xmobar --flags xmobar:with_xft
+stack install X11-xft xmonad xmonad-contrib xmobar --flag xmobar:with_xft
 
 # Haskell dev tools
 stack install hlint ghc-mod pointfree pointful
