@@ -15,6 +15,10 @@ mkinitcpio -p linux
 ## Network
 systemctl enable dhcpcd.service
 
+## Install zsh
+# To be set as the shell for new users
+pacman --quiet --noconfirm --needed -S zsh
+
 ## User and groups
 # Groups
 groupadd -r autologin
@@ -48,7 +52,6 @@ pacman --quiet --noconfirm --needed -S base-devel
 pacman --quiet --noconfirm --needed -S wget rsync git-core
 pacman --quiet --noconfirm --needed -S openssh ca-certificates
 pacman --quiet --noconfirm --needed -S base-devel
-pacman --quiet --noconfirm --needed -S zsh
 pacman --quiet --noconfirm --needed -S curl wget rsync git-core
 pacman --quiet --noconfirm --needed -S vim  # Just basic editing, we'll install neovim in user_tools.sh
 pacman --quiet --noconfirm --needed -S atool tar gzip zip unzip
