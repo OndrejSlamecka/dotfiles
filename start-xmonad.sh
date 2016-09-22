@@ -5,6 +5,8 @@ if test "x$XDG_CONFIG_HOME" = "x"; then
     export XDG_CONFIG_HOME
 fi
 
+devmon &
+
 xrdb -merge ~/.Xresources  # X settings
 xset +fp ~/.fonts/  # X fonts
 
@@ -21,6 +23,6 @@ dropbox-cli start  # Start dropbox syncing
 xset dpms 0 0 900  # Turn off the display after 15 minutes
 redshift &  # Start redshift
 
-feh --bg-scale ~/Dropbox/WP/nebula.jpg  # Set background
+feh --bg-scale ~/Dropbox/WP/fuji_purple_fog.jpg  # Set background
 
 stack exec xmonad

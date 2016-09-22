@@ -22,3 +22,14 @@ sed -i "#$allow_cmds#d"
 
 # Clean up install files
 rm base.sh /home/$username/user.sh
+
+# WiFi device advice
+echo """If this is a wifi only device you may want to
+
+    pacman -S dialog wpa_supplicant wireless_tools
+    wifi-menu # connect and create profile
+    netctl enable <profile name>
+"""
+
+# Boot loader reminder
+echo "Don't forget to install boot loader!"

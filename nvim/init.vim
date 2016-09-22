@@ -110,7 +110,7 @@ endif
 "" PLUGIN SETTINGS
 " Neomake
 let g:neomake_open_list = 2
-autocmd! BufWritePost,BufEnter * Neomake
+" autocmd! BufWritePost,BufEnter * Neomake
 
 " Airline
 let g:airline_powerline_fonts = 1

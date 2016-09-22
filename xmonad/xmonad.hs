@@ -19,10 +19,8 @@ volume m = spawn $ case m of
   Increase -> on +&&+ modvol "+"
   Decrease -> on +&&+ modvol "-"
   where
-    modvol   = ("amixer set Master 2" ++)
-    on       = on_m +&&+ on_h
-    on_m     = "amixer set Master on"
-    on_h     = "amixer set Headphone on"
+    modvol   = ("amixer set Master 3" ++)
+    on       = "amixer set Master on"
     a +&&+ b = a ++ " && " ++ b
 
 
