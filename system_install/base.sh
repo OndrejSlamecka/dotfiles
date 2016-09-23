@@ -54,27 +54,13 @@ pacman --quiet --noconfirm --needed -S openssh ca-certificates
 pacman --quiet --noconfirm --needed -S base-devel
 pacman --quiet --noconfirm --needed -S curl wget rsync git-core
 pacman --quiet --noconfirm --needed -S vim  # Just basic editing, we'll install neovim in user_tools.sh
-pacman --quiet --noconfirm --needed -S atool tar gzip zip unzip
+pacman --quiet --noconfirm --needed -S atool tar gzip zip unzip unrar
 pacman --quiet --noconfirm --needed -S python3 python-pip
 pacman --quiet --noconfirm --needed -S accountsservice # used by lightdm
 
 # USB auto-mount
 pacman --quiet --noconfirm --needed -S udevil udisks2 ntfs-3g
 chmod -s /usr/bin/udevil
-echo """// See the polkit(8) man page for more information
-// about configuring polkit.
-
-// Allow udisks2 to mount devices without authentication
-// for users in the "storage" group.
-
-polkit.addRule(function(action, subject) {
-    if ((action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
-        action.id == "org.freedesktop.udisks2.filesystem-mount") 
-      && subject.isInGroup("storage")) {
-        return polkit.Result.YES;
-    }
-});
-""" > /etc/polkit-1/rules.d/10-udisks2.rules
 
 
 ## Drivers & codecs
