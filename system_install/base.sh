@@ -74,8 +74,10 @@ pacman --quiet --noconfirm --needed -S libx264
 
 # Audio
 echo "Installing audio software: in case of problems after installation see"
-echo "'amixer' output (unmute if needed) and try running 'alsactl init' or 'alsactl store'"
+echo "'amixer' output (unmute if needed) and try running 'alsactl init' "
+echo "or 'alsactl store' or 'pavucontrol'"
 pacman --quiet --noconfirm --needed -S mpg123
+pacman --quiet --noconfirm --needed -S pulseaudio pulseaudio-alsa pavucontrol
 pacman --quiet --noconfirm --needed -S alsa-utils
 
 

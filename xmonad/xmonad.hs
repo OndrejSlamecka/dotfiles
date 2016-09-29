@@ -15,12 +15,13 @@ data Vol = Increase | Decrease | Toggle
 
 volume :: Vol -> X ()
 volume m = spawn $ case m of
-  Toggle   -> "amixer set Master toggle"
+  Toggle   -> "amixer set " ++ control ++ " toggle"
   Increase -> on +&&+ modvol "+"
   Decrease -> on +&&+ modvol "-"
   where
-    modvol   = ("amixer set Master 3" ++)
-    on       = "amixer set Master on"
+    modvol   = (("amixer set " ++ control ++ " 3%") ++)
+    on       = "amixer set " ++ control ++ " on"
+    control  = "Master"
     a +&&+ b = a ++ " && " ++ b
 
 
