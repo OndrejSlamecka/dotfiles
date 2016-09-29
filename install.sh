@@ -40,7 +40,7 @@ echo "
 
 # Dotfiles in $HOME
 dotfiles="xmonad Xresources xkb Xmodmap start-xmonad.sh urxvt fonts"
-dotfiles="$dotfiles oh-my-zsh zshrc vimrc"
+dotfiles="$dotfiles zshrc vimrc"
 dotfiles="$dotfiles emacs latexmkrc gitconfig ghci"
 
 echo "Creating symbolic links in $HOME (only if they do not exist)..."
@@ -48,7 +48,7 @@ make_links "$HOME" "$dotfiles"
 
 
 # Dotfiles in $XDG_CONFIG_HOME
-configfiles="nvim redshift.conf zathura pacaur termite"
+configfiles="zsh nvim redshift.conf zathura pacaur termite"
 echo "Creating symbolic links in $XDG_CONFIG_HOME (only if they do not exist)..."
 make_links "$XDG_CONFIG_HOME" "$configfiles"
 

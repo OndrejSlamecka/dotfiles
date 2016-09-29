@@ -2,7 +2,7 @@
 # Description
 # -----------
 #
-# sudo will be inserted before the command
+# sudo will be inserted before the command when Esc is hit twice
 #
 # ------------------------------------------------------------------------------
 # Authors

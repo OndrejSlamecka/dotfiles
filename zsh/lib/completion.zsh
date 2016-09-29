@@ -42,7 +42,7 @@ zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-dir
 
 # Use caching so that commands like apt and dpkg complete are useable
 zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
+zstyle ':completion::complete:*' cache-path $XDG_CACHE_HOME/.zcompcache
 
 # Don't complete uninteresting users
 zstyle ':completion:*:*:*:users' ignored-patterns \
@@ -57,17 +57,3 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 
 # ... unless we really want to.
 zstyle '*' single-ignored show
-
-if [[ $COMPLETION_WAITING_DOTS = true ]]; then
-  expand-or-complete-with-dots() {
-    # toggle line-wrapping off and back on again
-    [[ -n "$terminfo[rmam]" && -n "$terminfo[smam]" ]] && echoti rmam
-    print -Pn "%{%F{red}......%f%}"
-    [[ -n "$terminfo[rmam]" && -n "$terminfo[smam]" ]] && echoti smam
-
-    zle expand-or-complete
-    zle redisplay
-  }
-  zle -N expand-or-complete-with-dots
-  bindkey "^I" expand-or-complete-with-dots
-fi
