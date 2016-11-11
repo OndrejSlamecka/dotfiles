@@ -1,14 +1,7 @@
 #!/bin/sh
 
-if [ -z "$XDG_CONFIG_HOME" ]; then
-    XDG_CONFIG_HOME=$HOME/.config
-    export XDG_CONFIG_HOME
-fi
-
-if [ -z "$XDG_CACHE_HOME" ]; then
-    XDG_CACHE_HOME=$HOME/.cache
-    export XDG_CACHE_HOME
-fi
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
 
 export PATH=${PATH}:$HOME/.local/bin
 

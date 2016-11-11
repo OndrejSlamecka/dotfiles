@@ -47,8 +47,8 @@ main = do
     myKeys conf@XConfig {XMonad.modMask = modm} = Data.Map.fromList $
       [
       -- resizableTile, use mod-a and mod-z
-        ((modm,                 xK_a), sendMessage MirrorShrink)
-      , ((modm,                 xK_z), sendMessage MirrorExpand)
+        ((modm,                 xK_a), sendMessage MirrorExpand)
+      , ((modm,                 xK_z), sendMessage MirrorShrink)
 
       -- mod-b to toggle bars
       , ((modm,                 xK_b), sendMessage ToggleStruts)

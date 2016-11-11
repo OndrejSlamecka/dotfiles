@@ -8,24 +8,33 @@ snippet if
 		${2}
 	}
 
+snippet cout
+	std::cout << ${1} << std::endl;
+
 snippet compet
 	#include <iostream>
 	#include <algorithm>
 	#include <vector>
+	#include <set>
 	#include <list>
 	#include <map>
+	#include <unordered_map>
 	#include <queue>
+	#include <stack>
+	#include <limits>
 	#include <cstring> // memset
-	#include <climits>
 	#include <cmath>
 
 	#define uint unsigned int
-	#define mp make_pair
+	#define li long int
 	#define ll long long
+	#define mp make_pair
+	#define MAX_INT std::numeric_limits<int>::max();
 
 	using namespace std;
 
 	int main(int argc, char *argv[]) {
+		std::ios::sync_with_stdio(false);
 		${1}
 
 		return 0;

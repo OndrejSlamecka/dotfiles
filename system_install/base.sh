@@ -122,6 +122,7 @@ pacman --quiet --noconfirm --needed -S feh  # image viewer, shows background
 
 # Fonts
 pacman --quiet --noconfirm --needed -S ttf-dejavu ttf-ubuntu-font-family
+pacman --quiet --noconfirm --needed -S otf-ipafont # Japanese
 pacman --quiet --noconfirm --needed -S terminus-font  # looks cool in dmenu
 pacman --quiet --noconfirm --needed -S ttf-liberation  # used by chrome
 

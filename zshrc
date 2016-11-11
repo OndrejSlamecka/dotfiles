@@ -1,7 +1,7 @@
 ZSH=$XDG_CONFIG_HOME/zsh
 
-## PATH
-export PATH=$PATH:$HOME/.local/bin
+## PATH is set in ~/.start-xmonad.sh
+# export PATH=$PATH:$HOME/.local/bin
 
 
 ## Preferred editor for local and remote sessions
