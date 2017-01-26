@@ -146,7 +146,7 @@ pacman --quiet --noconfirm --needed -S ncmpc
 pacman --quiet --noconfirm --needed -S irssi
 
 # Writing
-pacman --quiet --noconfirm --needed -S texlive-most
+pacman --quiet --noconfirm --needed -S texlive-most biber
 pacman --quiet --noconfirm --needed -S aspell aspell-en
 
 # Network
