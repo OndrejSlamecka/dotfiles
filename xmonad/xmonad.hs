@@ -28,7 +28,7 @@ volume m = spawn $ case m of
 -- XMonad
 main :: IO ()
 main = do
-  myXmobar <- spawnPipe "pkill -f '^xmobar'; stack exec xmobar ~/.xmonad/xmobar.hs"
+  myXmobar <- spawnPipe "pkill -f '^xmobar'; stack exec xmobar ~/.xmonad/xmobar.hs &> ~/.xmonad/xmobar.errors"
   xmonad $ def {
     terminal           = "termite"
   , normalBorderColor  = "#6272a4" -- the Dracula theme
@@ -44,7 +44,7 @@ main = do
       where tall = ResizableTall 1 (3/100) (1/2) []
             wide = Mirror tall
 
-    myKeys conf@XConfig {XMonad.modMask = modm} = Data.Map.fromList $
+    myKeys conf@XConfig {modMask = modm} = Data.Map.fromList $
       [
       -- resizableTile, use mod-a and mod-z
         ((modm,                 xK_a), sendMessage MirrorExpand)
@@ -65,7 +65,6 @@ main = do
         | (i, k) <- zip (XMonad.workspaces conf) [xK_uring, xK_ecaron, xK_scaron, xK_ccaron, xK_rcaron, xK_zcaron, xK_yacute, xK_aacute, xK_iacute, xK_eacute]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-
     myLogHook bar = dynamicLogWithPP $ def
       { ppCurrent = wrap "[" "]"
       , ppVisible = wrap "(" ")"
@@ -73,4 +72,3 @@ main = do
       , ppLayout  = const ""
       , ppOutput  = hPutStrLn bar
       }
-

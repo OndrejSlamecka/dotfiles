@@ -5,10 +5,13 @@ export XDG_CACHE_HOME=$HOME/.cache
 
 export PATH=${PATH}:$HOME/.local/bin
 
+# Make Java apps work with xmonad
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 devmon &
 
-xrdb -merge ~/.Xresources  # X settings
-xset +fp ~/.fonts/  # X fonts
+xrdb -merge $HOME/.Xresources  # X settings
+#xset +fp $HOME/.fonts  # X fonts
 
 numlockx &  # Toggle numlock
 xkbcomp -I$HOME/dotfiles/xkb $HOME/dotfiles/xkb/cz-prog.xkb $DISPLAY -w 3
@@ -25,4 +28,4 @@ redshift &  # Start redshift
 
 feh --bg-scale ~/Dropbox/WP/fuji_purple_fog.jpg  # Set background
 
-stack exec xmonad
+xmonad
