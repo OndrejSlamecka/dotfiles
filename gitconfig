@@ -1,3 +1,6 @@
 [user]
 	name = Ondrej Slamecka
 	email = ondrej@slamecka.cz
+	signingkey = 5172FB9CFCC244836C42AB0DB681321E9F5769D1
+[commit]
+	gpgsign = true

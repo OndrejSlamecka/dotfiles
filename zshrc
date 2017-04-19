@@ -28,7 +28,7 @@ fi
 
 
 ## Plugins
-plugins=(git git-extras ssh-agent)
+plugins=(git git-extras ssh-agent gpg-agent)
 
 #- Loading
 # All plugins have to be in fpath before running compinit.
