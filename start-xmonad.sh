@@ -3,7 +3,9 @@
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 
-export PATH=${PATH}:$HOME/.local/bin
+NPM_PACKAGES="${HOME}/.npm-packages"
+
+export PATH="${PATH}:$NPM_PACKAGES/bin:$HOME/.local/bin"
 
 # Make Java apps work with xmonad
 export _JAVA_AWT_WM_NONREPARENTING=1
