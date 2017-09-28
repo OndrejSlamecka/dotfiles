@@ -53,6 +53,9 @@ main = do
       -- mod-b to toggle bars
       , ((modm,                 xK_b), sendMessage ToggleStruts)
 
+      -- mod-p to run launcher
+      , ((modm,                 xK_p), spawn "$(yeganesh -x)")
+
       -- audio
       , ((0, xF86XK_AudioLowerVolume), volume Decrease)
       , ((0, xF86XK_AudioRaiseVolume), volume Increase)

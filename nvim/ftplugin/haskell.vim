@@ -6,7 +6,7 @@ setlocal softtabstop=2
 setlocal shiftwidth=2
 
 " Conceal
-set conceallevel=2
+setlocal conceallevel=2
 hi link hsNiceOperator Operator
 hi! link Conceal Operator
 syntax match hsNiceOperator /\s\.\s/ms=s+1,me=e-1 conceal cchar=∘
@@ -42,12 +42,10 @@ else " no gui
   endif
 endif
 
-let g:haskellmode_completion_ghc = 1
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " == neco-ghc ==
 
-let g:haskellmode_completion_ghc = 1
+let g:haskellmode_completion_ghc = 0
 setlocal omnifunc=necoghc#omnifunc
 
 
