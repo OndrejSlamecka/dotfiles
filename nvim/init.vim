@@ -88,6 +88,10 @@ call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['hs']})
 call dein#add('eagletmt/neco-ghc', {'on_ft': ['hs']})
 call dein#add('neovimhaskell/haskell-vim', {'on_ft': ['hs']})
 
+" PureScript
+"au BufNewFile,BufRead *.purs set filetype=purs
+call dein#add('purescript-contrib/purescript-vim') ", {'on_ft': ['purs']})
+
 " C++
 call dein#add('octol/vim-cpp-enhanced-highlight', {'on_ft': ['cpp']})
 
