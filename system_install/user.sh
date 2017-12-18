@@ -14,29 +14,25 @@ git clone https://github.com/OndrejSlamecka/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles && sh install.sh
 
 ## AUR helper
-# Pacaur -- run as user, first fetch Dave Reisner's key to verify cower
-gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 487EACC08557AD082088DABA1EB2638FF56C0C53
-
 buildroot="$(mktemp -d)"
 mkdir -p "$buildroot" && cd "$buildroot"
 
-git clone "https://aur.archlinux.org/cower.git"
-git clone "https://aur.archlinux.org/pacaur.git"
+# Add author's GPG key
+gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
 
-cd "${buildroot}/cower"  && makepkg --syncdeps --install --noconfirm
-cd "${buildroot}/pacaur" && makepkg --syncdeps --install --noconfirm
-
+git clone "https://aur.archlinux.org/trizen.git"
+cd "${buildroot}/trizen" && makepkg --syncdeps --install --noconfirm
 cd "$HOME" && rm -rf "$buildroot"
 
-pacaur -Syu --aur
+trizen -Syu --aur
 
 # AUR packages
-pacaur --noconfirm --needed -S libtinfo  # Needed for Haskell Stack
-pacaur --noconfirm --needed -S redshift-minimal
-pacaur --noconfirm --needed -S unclutter-xfixes-git  # hides the mouse pointer when not used
-pacaur --noconfirm --needed -S powerline-fonts-git  # used by vim airline plugin
-pacaur --noconfirm --needed -S google-chrome
-pacaur --noconfirm --needed -S dropbox dropbox-cli
+trizen --noconfirm --needed -S libtinfo  # Needed for Haskell Stack
+trizen --noconfirm --needed -S redshift-minimal
+trizen --noconfirm --needed -S unclutter-xfixes-git  # hides the mouse pointer when not used
+trizen --noconfirm --needed -S powerline-fonts-git  # used by vim airline plugin
+trizen --noconfirm --needed -S google-chrome
+trizen --noconfirm --needed -S dropbox dropbox-cli
 
 
 ## Configure mpd (we're using per-user configuration)

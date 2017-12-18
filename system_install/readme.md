@@ -19,7 +19,7 @@ The script downloads and runs two files:
 
 * `base.sh` sets basic information, manages users and groups and installs programs,
 * `user.sh` installs and configures software which should be installed
-  locally (e.g. pacaur, mpd).
+  locally (e.g. trizen, mpd).
 
 
 If the system is running in VirtualBox then
@@ -34,7 +34,7 @@ Updating
 For updating the installation use the commands below.
 
     pacman -Syu
-    pacaur -Syu --aur
+    trizen -Syu --aur
     stack upgrade
     nvim +"call dein#update()"
     pacman -Rns $(pacman -Qtdq) # remove orphans

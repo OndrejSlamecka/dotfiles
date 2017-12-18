@@ -23,7 +23,7 @@ xmodmap ~/.Xmodmap
 unclutter &  # Hide mouse when unused
 
 [ ! -s ~/.mpd/pid ] && mpd  # Music player daemon
-dropbox-cli start  # Start dropbox syncing
+dropbox-cli start & # Start dropbox syncing
 
 xset dpms 0 0 900  # Turn off the display after 15 minutes
 redshift &  # Start redshift
