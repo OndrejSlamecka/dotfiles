@@ -1,28 +1,15 @@
 import qualified Data.Map (fromList)
+import Control.Monad (void)
 import XMonad
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.Run (spawnPipe, hPutStrLn)
+import XMonad.Actions.Volume
 import qualified XMonad.StackSet as W (greedyView, shift)
 import Graphics.X11.ExtraTypes.XF86 -- multimedia keys
 import Graphics.X11.ExtraTypes.XorgDefault -- zcaron and similar Czech keys
-
-
--- Volume
-data Vol = Increase | Decrease | Toggle
-
-volume :: Vol -> X ()
-volume m = spawn $ case m of
-  Toggle   -> "amixer set " ++ control ++ " toggle"
-  Increase -> on +&&+ modvol "+"
-  Decrease -> on +&&+ modvol "-"
-  where
-    modvol   = (("amixer set " ++ control ++ " 3%") ++)
-    on       = "amixer set " ++ control ++ " on"
-    control  = "Master"
-    a +&&+ b = a ++ " && " ++ b
 
 
 -- XMonad
@@ -56,10 +43,10 @@ main = do
       -- mod-p to run launcher
       , ((modm,                 xK_p), spawn "$(yeganesh -x)")
 
-      -- audio
-      , ((0, xF86XK_AudioLowerVolume), volume Decrease)
-      , ((0, xF86XK_AudioRaiseVolume), volume Increase)
-      , ((0,        xF86XK_AudioMute), volume Toggle)
+      -- audio, contrary to intuition `setMute True` means unmute
+      , ((0, xF86XK_AudioLowerVolume), void $ setMute True >> lowerVolume 3)
+      , ((0, xF86XK_AudioRaiseVolume), void $ setMute True >> raiseVolume 3)
+      , ((0,        xF86XK_AudioMute), void   toggleMute)
       ]
       ++
       -- Switching workspaces with my Czech keyboard
