@@ -16,22 +16,22 @@ import Graphics.X11.ExtraTypes.XorgDefault -- zcaron and similar Czech keys
 main :: IO ()
 main = do
   myXmobar <- spawnPipe "pkill -f '^xmobar'; stack exec xmobar ~/.xmonad/xmobar.hs &> ~/.xmonad/xmobar.errors"
-  xmonad $ def {
-    terminal           = "termite"
-  , normalBorderColor  = "#6272a4" -- the Dracula theme
-  , focusedBorderColor = "#ff5555"
-  , layoutHook         = myLayoutHook
-  , keys               = myKeys <+> keys def
-  , logHook            = myLogHook myXmobar
-  , modMask            = mod4Mask -- use the Win key as mod
-  , handleEventHook    = docksEventHook
-  }
+  xmonad $ def { terminal           = "termite"
+               , normalBorderColor  = "#6272a4" -- the Dracula theme
+               , focusedBorderColor = "#ff5555"
+               , layoutHook         = myLayoutHook
+               , keys               = myKeys <+> keys def
+               , logHook            = myLogHook myXmobar
+               , modMask            = mod4Mask -- use the Win key as mod
+               , handleEventHook    = docksEventHook
+               }
   where
     myLayoutHook = avoidStruts . smartBorders $ (tall ||| wide)
-      where tall = ResizableTall 1 (3/100) (1/2) []
-            wide = Mirror tall
+      where
+        tall = ResizableTall 1 (3/100) (1/2) []
+        wide = Mirror tall
 
-    myKeys conf@XConfig {modMask = modm} = Data.Map.fromList $
+    myKeys conf@XConfig { modMask = modm } = Data.Map.fromList $
       [
       -- resizableTile, use mod-a and mod-z
         ((modm,                 xK_a), sendMessage MirrorExpand)
@@ -50,10 +50,23 @@ main = do
       ]
       ++
       -- Switching workspaces with my Czech keyboard
-      -- (+ěšřžýáíé instead of 1234567890)
-      [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_uring, xK_ecaron, xK_scaron, xK_ccaron, xK_rcaron, xK_zcaron, xK_yacute, xK_aacute, xK_iacute, xK_eacute]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+      -- (ůěšřžýáíé instead of 1234567890)
+      [ ((m .|. modm, k), windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) uesrzyaie
+        , (m, f) <- [(noModMask, W.greedyView), (shiftMask, W.shift)]
+      ]
+      where
+        uesrzyaie = [ xK_uring
+                    , xK_ecaron
+                    , xK_scaron
+                    , xK_ccaron
+                    , xK_rcaron
+                    , xK_zcaron
+                    , xK_yacute
+                    , xK_aacute
+                    , xK_iacute
+                    , xK_eacute
+                    ]
 
     myLogHook bar = dynamicLogWithPP $ def
       { ppCurrent = wrap "[" "]"
