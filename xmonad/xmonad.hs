@@ -7,7 +7,8 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.Run (spawnPipe, hPutStrLn)
 import XMonad.Actions.Volume
-import qualified XMonad.StackSet as W (greedyView, shift)
+import XMonad.Actions.SpawnOn (manageSpawn, spawnOn)
+import qualified XMonad.StackSet as W (view, greedyView, shift)
 import Graphics.X11.ExtraTypes.XF86 -- multimedia keys
 import Graphics.X11.ExtraTypes.XorgDefault -- zcaron and similar Czech keys
 
@@ -23,13 +24,19 @@ main = do
                , keys               = myKeys <+> keys def
                , logHook            = myLogHook myXmobar
                , modMask            = mod4Mask -- use the Win key as mod
+               , manageHook         = manageSpawn <+> manageHook def
                , handleEventHook    = docksEventHook
+               , startupHook        = myStartupHook
                }
   where
     myLayoutHook = avoidStruts . smartBorders $ (tall ||| wide)
       where
         tall = ResizableTall 1 (3/100) (1/2) []
         wide = Mirror tall
+
+    myStartupHook = spawnOn "2" "google-chrome-stable"
+                    <+> spawnOn "3" "audacious"
+                    <+> windows (W.view "2")
 
     myKeys conf@XConfig { modMask = modm } = Data.Map.fromList $
       [
@@ -41,7 +48,7 @@ main = do
       , ((modm,                 xK_b), sendMessage ToggleStruts)
 
       -- mod-p to run launcher
-      , ((modm,                 xK_p), spawn "$(yeganesh -x)")
+      , ((modm,                 xK_p), spawn "rofi -show run")
 
       -- audio, contrary to intuition `setMute True` means unmute
       , ((0, xF86XK_AudioLowerVolume), void $ setMute True >> lowerVolume 3)
@@ -56,16 +63,16 @@ main = do
         , (m, f) <- [(noModMask, W.greedyView), (shiftMask, W.shift)]
       ]
       where
-        uesrzyaie = [ xK_uring
-                    , xK_ecaron
-                    , xK_scaron
-                    , xK_ccaron
-                    , xK_rcaron
-                    , xK_zcaron
-                    , xK_yacute
-                    , xK_aacute
-                    , xK_iacute
-                    , xK_eacute
+        uesrzyaie = [ xK_uring  -- ů
+                    , xK_ecaron -- ě
+                    , xK_scaron -- š
+                    , xK_ccaron -- č
+                    , xK_rcaron -- ř
+                    , xK_zcaron -- ž
+                    , xK_yacute -- ý
+                    , xK_aacute -- á
+                    , xK_iacute -- í
+                    , xK_eacute -- é
                     ]
 
     myLogHook bar = dynamicLogWithPP $ def

@@ -1,3 +1,4 @@
+source $HOME/.config/path.sh
 ZSH=$XDG_CONFIG_HOME/zsh
 
 ## PATH is set in ~/.start-xmonad.sh

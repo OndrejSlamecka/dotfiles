@@ -48,7 +48,7 @@ make_links "$HOME" "$dotfiles"
 
 
 # Dotfiles in $XDG_CONFIG_HOME
-configfiles="zsh nvim redshift.conf zathura trizen termite"
+configfiles="path.sh zsh nvim redshift.conf zathura trizen termite"
 echo "Creating symbolic links in $XDG_CONFIG_HOME (only if they do not exist)..."
 make_links "$XDG_CONFIG_HOME" "$configfiles"
 
