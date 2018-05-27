@@ -1,6 +1,7 @@
 import qualified Data.Map (fromList)
 import Control.Monad (void)
 import XMonad
+import XMonad.Layout (Full)
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageDocks
@@ -29,7 +30,7 @@ main = do
                , startupHook        = myStartupHook
                }
   where
-    myLayoutHook = avoidStruts . smartBorders $ (tall ||| wide)
+    myLayoutHook = avoidStruts . smartBorders $ (tall ||| wide ||| Full)
       where
         tall = ResizableTall 1 (3/100) (1/2) []
         wide = Mirror tall
