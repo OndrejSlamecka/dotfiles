@@ -20,6 +20,6 @@ dropbox-cli start & # Start dropbox syncing
 xset dpms 0 0 900  # Turn off the display after 15 minutes
 redshift &  # Start redshift
 
-feh --bg-scale ~/Dropbox/WP/fuji_purple_fog.jpg  # Set background
+feh --bg-scale ~/Dropbox/WP/fuji_autumn.jpg  # Set background
 
 exec xmonad
