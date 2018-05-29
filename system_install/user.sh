@@ -82,21 +82,16 @@ sudo echo 'polkit.addRule(function(action, subject) {
 });' > /etc/polkit-1/rules.d/50-udiskie.rules
 
 ## Haskell
-sudo sed -i '/\[community\]/i\
-[haskell-core]\
-Server = http:\/\/xsounds.org\/~haskell\/core\/$arch\
-' /etc/pacman.conf
-
-sudo pacman-key -r 4209170B
-sudo pacman-key --lsign-key 4209170B
-sudo pacman --quiet --noconfirm --needed -Syu
-sudo pacman --quiet --noconfirm --needed -S haskell-stack-tool
+trizen --quiet --noconfirm --needed -S stack-bin
 
 # Setup stack
 sudo ln -s /usr/lib/libtinfo.so /usr/lib/libtinfo.so.5
 stack upgrade
 stack setup
 stack update
+
+# Now we have $HOME/.local/bin/stack and do not need the Arch one
+trizen -R stack-bin
 
 # xmonad
 cd ~/.xmonad && make
