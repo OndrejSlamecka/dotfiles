@@ -9,12 +9,6 @@ if [ -z "$hostname" ]; then
     exit 1
 fi
 
-## Initramfs
-mkinitcpio -p linux
-
-## Network
-systemctl enable dhcpcd.service
-
 ## Install zsh
 # To be set as the shell for new users
 pacman --quiet --noconfirm --needed -S zsh
