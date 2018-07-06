@@ -123,7 +123,6 @@ pacman --quiet --noconfirm --needed -S ttf-liberation  # used by chrome
 ## User tools
 # Text editing
 pacman --quiet --noconfirm --needed -S neovim
-pip3 install neovim-remote  # Used with vimtex
 pacman --quiet --noconfirm --needed -S dos2unix
 
 # PDF
@@ -139,7 +138,6 @@ pacman --quiet --noconfirm --needed -S ncmpc
 pacman --quiet --noconfirm --needed -S irssi
 
 # Writing
-pacman --quiet --noconfirm --needed -S texlive-most biber
 pacman --quiet --noconfirm --needed -S aspell aspell-en
 
 # Network
