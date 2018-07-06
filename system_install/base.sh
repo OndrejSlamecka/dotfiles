@@ -45,7 +45,7 @@ timedatectl set-ntp true # time sync daemon
 
 ## Basic tools
 pacman --quiet --noconfirm --needed -S base-devel
-pacman --quiet --noconfirm --needed -S wget rsync git-core
+pacman --quiet --noconfirm --needed -S wget rsync git
 pacman --quiet --noconfirm --needed -S openssh ca-certificates
 pacman --quiet --noconfirm --needed -S base-devel
 pacman --quiet --noconfirm --needed -S curl wget rsync git-core
