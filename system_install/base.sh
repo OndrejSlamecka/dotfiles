@@ -134,8 +134,9 @@ pacman --quiet --noconfirm --needed -S xdotool  # Required to connect zathura wi
 pacman --quiet --noconfirm --needed -S mpd
 pacman --quiet --noconfirm --needed -S ncmpc
 
-# IRC
+# IRC and chats
 pacman --quiet --noconfirm --needed -S irssi
+pacman --quiet --noconfirm --needed -S matterhorn
 
 # Writing
 pacman --quiet --noconfirm --needed -S aspell aspell-en
