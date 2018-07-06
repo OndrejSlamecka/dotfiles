@@ -47,8 +47,6 @@ timedatectl set-ntp true # time sync daemon
 pacman --quiet --noconfirm --needed -S base-devel
 pacman --quiet --noconfirm --needed -S wget rsync git
 pacman --quiet --noconfirm --needed -S openssh ca-certificates
-pacman --quiet --noconfirm --needed -S base-devel
-pacman --quiet --noconfirm --needed -S curl wget rsync git-core
 pacman --quiet --noconfirm --needed -S vim  # Just basic editing, we'll install neovim in user_tools.sh
 pacman --quiet --noconfirm --needed -S atool tar gzip zip unzip unrar
 pacman --quiet --noconfirm --needed -S python3 python-pip
