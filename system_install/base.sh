@@ -38,7 +38,9 @@ echo "$hostname" > /etc/hostname
 echo -e "127.0.1.1 \t $hostname.lo \t $hostname" >> /etc/hosts
 
 ## Time and locale
-ln -s /usr/share/zoneinfo/Europe/Prague /etc/localtime
+echo "Enter your timezone. E.g., 'Europe/London'"
+read timezone
+ln -s "/usr/share/zoneinfo/$timezone" /etc/localtime
 hwclock --systohc --utc
 
 sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
