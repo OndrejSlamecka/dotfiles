@@ -9,9 +9,9 @@ if [ -z "$hostname" ]; then
     exit 1
 fi
 
-## Install zsh
-# To be set as the shell for new users
-pacman --quiet --noconfirm --needed -S zsh
+# Install shell. To be set as the shell for new users
+sh="fish"
+pacman --quiet --noconfirm --needed -S "$sh"
 
 ## User and groups
 # Groups
@@ -23,7 +23,7 @@ echo "Set password for root: "
 passwd
 
 # Add user
-useradd -m -G wheel,audio,video,autologin,storage -s `which zsh` "$username"
+useradd -m -G wheel,audio,video,autologin,storage -s $(which "$sh") "$username"
 echo "Set password for $username:"
 passwd "$username"
 
@@ -61,7 +61,7 @@ chmod -s /usr/bin/udevil
 # Graphic drivers
 echo "Install graphic drivers in the shell below and close it to proceed with installation."
 echo "It is advised to consult the Arch Wiki, e.g. https://wiki.archlinux.org/index.php/intel_graphics"
-zsh
+$sh
 
 # Video codecs
 pacman --quiet --noconfirm --needed -S libx264
@@ -77,7 +77,7 @@ pacman --quiet --noconfirm --needed -S alsa-utils
 
 ## Display
 # X11
-pacman --quiet --noconfirm --needed -S xorg-server xorg-xrdb xorg-xinit xorg-xmodmap libxrandr
+pacman --quiet --noconfirm --needed -S xorg-server xorg-xrdb xorg-xinit xorg-xmodmap xorg-xprops libxrandr
 pacman --quiet --noconfirm --needed -S xorg-xfontsel xorg-xlsfonts  # Run xfontsel to select fonts in X format, xlsfonts lists installed (cached) fonts
 
 # XDG
@@ -108,14 +108,15 @@ Type=XSession" > /usr/share/xsessions/xmonad.desktop
 
 
 # Interface
-pacman --quiet --noconfirm --needed -S termite
+pacman --quiet --noconfirm --needed -S kitty
+pacman --quiet --noconfirm --needed -S fzf
 pacman --quiet --noconfirm --needed -S rofi
 pacman --quiet --noconfirm --needed -S xclip
 pacman --quiet --noconfirm --needed -S numlockx  # utility to turn on numlock
 pacman --quiet --noconfirm --needed -S feh  # image viewer, shows background
 
 # Fonts
-pacman --quiet --noconfirm --needed -S ttf-dejavu ttf-ubuntu-font-family
+pacman --quiet --noconfirm --needed -S ttf-hack ttf-ubuntu-font-family
 pacman --quiet --noconfirm --needed -S otf-ipafont # Japanese
 pacman --quiet --noconfirm --needed -S ttf-liberation  # used by chrome
 
@@ -123,6 +124,7 @@ pacman --quiet --noconfirm --needed -S ttf-liberation  # used by chrome
 ## User tools
 # Text editing
 pacman --quiet --noconfirm --needed -S neovim
+pip install neovim
 pacman --quiet --noconfirm --needed -S dos2unix
 
 # PDF
@@ -136,7 +138,6 @@ pacman --quiet --noconfirm --needed -S ncmpc
 
 # IRC and chats
 pacman --quiet --noconfirm --needed -S irssi
-pacman --quiet --noconfirm --needed -S matterhorn
 
 # Writing
 pacman --quiet --noconfirm --needed -S aspell aspell-en

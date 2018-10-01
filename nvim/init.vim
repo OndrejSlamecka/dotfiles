@@ -1,39 +1,23 @@
 syntax on
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " remove after neovim update
-" set termguicolors " enable, see above
+set termguicolors
 
-" INTERFACE
-
-" Ruler
-set ruler
-
-" Padding when scrolling
-set scrolloff=6
+set number " Show line numbers
+set scrolloff=6 " Pad scrolling
 
 " Map <Leader> to ',' and use ';' instead of ':', ';;' instead of ';'
 let mapleader=","
-nmap ; :
+map ; :
 noremap ;; ;
 
 " Wildmenu
 set wildmenu
+set wildchar=<S-Tab>
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set wildmode=list:longest,full
 
 " Backspace behavior
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-
-" No status line -- unfortunately this setting is making problems with
-" lopen and lclose calls (done by neomake for example)
-" set laststatus=0
-
-" Search
-set incsearch
-set hlsearch
-
-" Carry over indenting from previous line
-set autoindent
 
 " Default indentation
 set expandtab
@@ -44,44 +28,28 @@ set shiftwidth=4
 set tw=72
 set wrap
 
-" Auto and smart indent
-set ai
-set si
-
-" Show line numbers
-set number
-
 
 "" LOAD PLUGINS -- dein.vim
-set runtimepath^=/home/ondra/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath^=/home/$USER/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.cache/dein'))
 call dein#add('Shougo/dein.vim')
 
-call dein#add('Shougo/vimproc.vim', { 'build': 'make' })
-
-" Utility
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#whitespace#enabled = 0
 
 call dein#add('scrooloose/nerdtree')
+map <Leader>n :NERDTreeToggle<CR>
+
+call dein#add('scrooloose/nerdcommenter')
 call dein#add('ctrlpvim/ctrlp.vim')
-
-call dein#add('tomtom/tlib_vim')  " snipmate dependency
-call dein#add('MarcWeber/vim-addon-mw-utils')  " snipmate dependency
-call dein#add('garbas/vim-snipmate')
-
-call dein#add('Shougo/neocomplete')
-
 call dein#add('godlygeek/tabular')
-call dein#add('ervandew/supertab')
+call dein#add('tpope/vim-fugitive')
 
 " Colors
 call dein#add('dracula/vim')
 color dracula
-
-" General programming
-call dein#add('benekastah/neomake')
-call dein#add('scrooloose/nerdcommenter')
 
 " Haskell
 call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['hs']})
@@ -98,8 +66,13 @@ call dein#add('octol/vim-cpp-enhanced-highlight', {'on_ft': ['cpp']})
 " Python
 call dein#add('vim-scripts/indentpython.vim', {'on_ft': ['py']})
 
-" LaTeX
-call dein#add('lervag/vimtex', {'on_ft': ['tex']})
+" Erlang
+call dein#add('vim-erlang/vim-erlang-runtime', {'on_ft': ['erl']})
+call dein#add('vim-erlang/vim-erlang-tags', {'on_ft': ['erl']})
+
+" Cap'n Proto
+call dein#add('cstrahan/vim-capnp', {'on_ft': ['capnp']})
+au BufRead,BufNewFile *.capnp set filetype=capnp
 
 " End plugin definitions
 call dein#end()
@@ -111,31 +84,13 @@ if dein#check_install()
 endif
 
 
-"" PLUGIN SETTINGS
-" Neomake
-let g:neomake_open_list = 2
-" autocmd! BufWritePost,BufEnter * Neomake
-
-" Airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#whitespace#enabled = 0
-
-" NERDTree
-map <Leader>n :NERDTreeToggle<CR>
-
-" NERDCommenter
-map <silent> <Leader>t :CtrlP()<CR>
-noremap <leader>b<space> :CtrlPBuffer<cr>
-let g:ctrlp_custom_ignore = '\v[\/]dist$'
-
-
 "" COMMANDS
 " Press F2 will save the file
 nmap <F2> :w<CR>
 imap <F2> <ESC>:w<CR>i
 
-" System clipboard copy with control-shift-c
-vmap <C-S-C> "+y
+" System clipboard copy
+vmap <C-c> "+y
 
 " Medium speed scrolling with shift and arrows
 nmap <S-Up> 5k
@@ -145,19 +100,8 @@ vmap <S-Down> 5j
 imap <S-Up> <Esc>5ki
 imap <S-Down> <Esc>5ji
 
-" Use Q for formatting the current paragraph (or selection)
-vmap Q gq
-nmap Q gqap
-
-" Create new line, leave insert mode and go line up
-nmap <CR> o<Esc>k
-
-" Create a new line after the current line and paste to it
-nmap <Leader>p o<ESC>p
-nmap <Space> i <Esc>
-
-" <Ctrl-l> redraws the screen and removes any search highlighting
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+" <Leader><Space> redraws the screen and removes any search highlighting
+nnoremap <Leader><Space> :nohl<CR><C-l>
 
 " Switching tabs
 nmap <F5> :tabp<CR>
