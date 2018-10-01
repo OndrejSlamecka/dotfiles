@@ -18,7 +18,7 @@ import Graphics.X11.ExtraTypes.XorgDefault -- zcaron and similar Czech keys
 main :: IO ()
 main = do
   myXmobar <- spawnPipe "pkill -f '^xmobar'; stack exec xmobar ~/.xmonad/xmobar.hs &> ~/.xmonad/xmobar.errors"
-  xmonad $ def { terminal           = "termite"
+  xmonad $ def { terminal           = "kitty"
                , normalBorderColor  = "#6272a4" -- the Dracula theme
                , focusedBorderColor = "#ff5555"
                , layoutHook         = myLayoutHook

@@ -41,7 +41,6 @@ export CONF_MPD_HOMEDIR="$HOME/.config/mpd"  # TODO: Can we use $XDG_CONFIG_HOME
 mkdir -p "$CONF_MPD_HOMEDIR/playlists"
 
 cd ~/tmp && git clone https://github.com/ronalde/mpd-configure.git && cd ~/tmp/mpd-configure
-# TODO: Add pulseaudio
 echo "Running mpd-configure with default settings, if you are using advanced setup
 (like DAC on USB) see https://github.com/ronalde/mpd-configure"
 bash mpd-configure -n -o "$HOME/.config/mpd/mpd.conf"

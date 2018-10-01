@@ -1,9 +1,7 @@
-Scripts for installing and maintaining operating system.
-
 Installing
 ----------
 
-When installing operating system
+When installing the operating system
 ([guide](https://wiki.archlinux.org/index.php/installation_guide)) run
 this script after `chroot`-ing and skip the rest of the steps in the guide
 **except boot loader**, don't forget to install it!
@@ -38,5 +36,4 @@ For updating the installation use the commands below.
     stack upgrade
     nvim +"call dein#update()"
     pacman -Rns $(pacman -Qtdq) # remove orphans
-
 

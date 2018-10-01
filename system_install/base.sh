@@ -9,15 +9,9 @@ if [ -z "$hostname" ]; then
     exit 1
 fi
 
-## Initramfs
-mkinitcpio -p linux
-
-## Network
-systemctl enable dhcpcd.service
-
-## Install zsh
-# To be set as the shell for new users
-pacman --quiet --noconfirm --needed -S zsh
+# Install shell. To be set as the shell for new users
+sh="fish"
+pacman --quiet --noconfirm --needed -S "$sh"
 
 ## User and groups
 # Groups
@@ -29,7 +23,7 @@ echo "Set password for root: "
 passwd
 
 # Add user
-useradd -m -G wheel,audio,video,autologin,storage -s `which zsh` "$username"
+useradd -m -G wheel,audio,video,autologin,storage -s $(which "$sh") "$username"
 echo "Set password for $username:"
 passwd "$username"
 
@@ -38,21 +32,21 @@ echo "$hostname" > /etc/hostname
 echo -e "127.0.1.1 \t $hostname.lo \t $hostname" >> /etc/hosts
 
 ## Time and locale
-ln -s /usr/share/zoneinfo/Europe/Prague /etc/localtime
+echo "Enter your timezone. E.g., 'Europe/London'"
+read timezone
+ln -s "/usr/share/zoneinfo/$timezone" /etc/localtime
 hwclock --systohc --utc
 
 sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
 locale-gen
-echo LANG=en_US.UTF-8 > /etc/locale.conf
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 timedatectl set-ntp true # time sync daemon
 
 ## Basic tools
 pacman --quiet --noconfirm --needed -S base-devel
-pacman --quiet --noconfirm --needed -S wget rsync git-core
+pacman --quiet --noconfirm --needed -S wget rsync git
 pacman --quiet --noconfirm --needed -S openssh ca-certificates
-pacman --quiet --noconfirm --needed -S base-devel
-pacman --quiet --noconfirm --needed -S curl wget rsync git-core
 pacman --quiet --noconfirm --needed -S vim  # Just basic editing, we'll install neovim in user_tools.sh
 pacman --quiet --noconfirm --needed -S atool tar gzip zip unzip unrar
 pacman --quiet --noconfirm --needed -S python3 python-pip
@@ -67,7 +61,7 @@ chmod -s /usr/bin/udevil
 # Graphic drivers
 echo "Install graphic drivers in the shell below and close it to proceed with installation."
 echo "It is advised to consult the Arch Wiki, e.g. https://wiki.archlinux.org/index.php/intel_graphics"
-zsh
+$sh
 
 # Video codecs
 pacman --quiet --noconfirm --needed -S libx264
@@ -83,7 +77,7 @@ pacman --quiet --noconfirm --needed -S alsa-utils
 
 ## Display
 # X11
-pacman --quiet --noconfirm --needed -S xorg-server xorg-xrdb xorg-xinit xorg-xmodmap libxrandr
+pacman --quiet --noconfirm --needed -S xorg-server xorg-xrdb xorg-xinit xorg-xmodmap xorg-xprops libxrandr
 pacman --quiet --noconfirm --needed -S xorg-xfontsel xorg-xlsfonts  # Run xfontsel to select fonts in X format, xlsfonts lists installed (cached) fonts
 
 # XDG
@@ -114,14 +108,15 @@ Type=XSession" > /usr/share/xsessions/xmonad.desktop
 
 
 # Interface
-pacman --quiet --noconfirm --needed -S termite
+pacman --quiet --noconfirm --needed -S kitty
+pacman --quiet --noconfirm --needed -S fzf
 pacman --quiet --noconfirm --needed -S rofi
 pacman --quiet --noconfirm --needed -S xclip
 pacman --quiet --noconfirm --needed -S numlockx  # utility to turn on numlock
 pacman --quiet --noconfirm --needed -S feh  # image viewer, shows background
 
 # Fonts
-pacman --quiet --noconfirm --needed -S ttf-dejavu ttf-ubuntu-font-family
+pacman --quiet --noconfirm --needed -S ttf-hack ttf-ubuntu-font-family
 pacman --quiet --noconfirm --needed -S otf-ipafont # Japanese
 pacman --quiet --noconfirm --needed -S ttf-liberation  # used by chrome
 pacman --quiet --noconfirm --needed -S noto-fonts-emoji
@@ -131,7 +126,7 @@ pacman --quiet --noconfirm --needed -S noto-fonts-emoji
 ## User tools
 # Text editing
 pacman --quiet --noconfirm --needed -S neovim
-pip3 install neovim-remote  # Used with vimtex
+pip install neovim
 pacman --quiet --noconfirm --needed -S dos2unix
 
 # PDF
@@ -143,11 +138,10 @@ pacman --quiet --noconfirm --needed -S xdotool  # Required to connect zathura wi
 pacman --quiet --noconfirm --needed -S mpd
 pacman --quiet --noconfirm --needed -S ncmpc
 
-# IRC
+# IRC and chats
 pacman --quiet --noconfirm --needed -S irssi
 
 # Writing
-pacman --quiet --noconfirm --needed -S texlive-most biber
 pacman --quiet --noconfirm --needed -S aspell aspell-en
 
 # Network

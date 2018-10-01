@@ -38,17 +38,18 @@ echo "
    (_| (_) |_  |  | | (/_ _>   | | | _>  |_ (_| | | (/_ |
 "
 
-# Dotfiles in $HOME
-dotfiles="xmonad Xresources xkb Xmodmap start-xmonad.sh urxvt fonts"
-dotfiles="$dotfiles zshrc vimrc"
-dotfiles="$dotfiles emacs latexmkrc gitconfig ghci"
+# Clear fish cache file (I _think_ it should be stored in `~/.cache`)
+rm "$HOME/.config/fish/fishd.$USER" && rmdir "$HOME/.config/fish"
 
+
+# Dotfiles in $HOME
+dotfiles="xmonad xkb Xmodmap start-xmonad.sh fonts vimrc latexmkrc gitconfig ghci"
 echo "Creating symbolic links in $HOME (only if they do not exist)..."
 make_links "$HOME" "$dotfiles"
 
 
 # Dotfiles in $XDG_CONFIG_HOME
-configfiles="path.sh zsh nvim redshift.conf zathura trizen termite"
+configfiles="path.sh fish rofi nvim redshift.conf zathura trizen kitty"
 echo "Creating symbolic links in $XDG_CONFIG_HOME (only if they do not exist)..."
 make_links "$XDG_CONFIG_HOME" "$configfiles"
 
@@ -58,8 +59,7 @@ git remote set-url origin git@github.com:OndrejSlamecka/dotfiles.git
 
 
 # X setup
-echo "Merging .Xresources and clearing font cache..."
-xrdb -merge ~/.Xresources
+echo "Clearing font cache..."
 fc-cache ~/.fonts/
 
 

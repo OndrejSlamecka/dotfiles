@@ -22,7 +22,7 @@ Config
   , template = " %StdinReader% }{ <fn=1>%volume%</fn>   %date%  "
   , commands =
     [ Run Date "%H:%M" "date" 10
-      , Run Com "/home/ondra/.xmonad/volume.sh" [] "volume" 10
+      , Run Com ".xmonad/volume.sh" [] "volume" 10
       , Run StdinReader
     ]
   }
