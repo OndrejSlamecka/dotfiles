@@ -4,11 +4,12 @@ function install_git_abbr
     abbr gst='git status'
     abbr gd='git diff'
     abbr gdc='git diff --cached'
-    abbr gl='git pull'
+    abbr gg='git pull'
     abbr gup='git pull --rebase'
     abbr gp='git push'
     abbr gf='git push --force'
     abbr gd='git diff'
+    abbr gl='git log'
 
     abbr gr='git rebase -i (git merge-base HEAD origin/master)'
     abbr grc='git rebase --continue'
