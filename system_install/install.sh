@@ -23,6 +23,8 @@ sed -i "#$allow_cmds#d"
 # Clean up install files
 rm base.sh /home/$username/user.sh
 
+echo "After finishing have a look at ~/dotfiles/system_install/useful.sh"
+
 # WiFi device advice
 echo """If this is a wifi only device you may want to
 

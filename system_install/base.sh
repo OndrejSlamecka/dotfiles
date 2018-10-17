@@ -44,13 +44,13 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 timedatectl set-ntp true # time sync daemon
 
 ## Basic tools
-pacman --quiet --noconfirm --needed -S base-devel
-pacman --quiet --noconfirm --needed -S wget rsync git
-pacman --quiet --noconfirm --needed -S openssh ca-certificates
-pacman --quiet --noconfirm --needed -S vim  # Just basic editing, we'll install neovim in user_tools.sh
-pacman --quiet --noconfirm --needed -S atool tar gzip zip unzip unrar
-pacman --quiet --noconfirm --needed -S python3 python-pip
-pacman --quiet --noconfirm --needed -S accountsservice # used by lightdm
+pacman --quiet --noconfirm --needed -S \
+    base-devel vim \
+    net-tools bind-tools \
+    wget rsync git \
+    openssh ca-certificates \
+    atool tar gzip zip unzip unrar \
+    python3 python-pip \
 
 # USB auto-mount
 pacman --quiet --noconfirm --needed -S udevil udisks2 ntfs-3g
@@ -70,25 +70,26 @@ pacman --quiet --noconfirm --needed -S libx264
 echo "Installing audio software: in case of problems after installation see"
 echo "'amixer' output (unmute if needed) and try running 'alsactl init' "
 echo "or 'alsactl store' or 'pavucontrol'"
-pacman --quiet --noconfirm --needed -S mpg123
-pacman --quiet --noconfirm --needed -S pulseaudio pulseaudio-alsa pavucontrol
-pacman --quiet --noconfirm --needed -S alsa-utils
+pacman --quiet --noconfirm --needed -S \
+    mpg123 \
+    pulseaudio pulseaudio-alsa pavucontrol \
+    alsa-utils
 
 
 ## Display
 # X11
-pacman --quiet --noconfirm --needed -S xorg-server xorg-xrdb xorg-xinit xorg-xmodmap xorg-xprops libxrandr
-pacman --quiet --noconfirm --needed -S xorg-xfontsel xorg-xlsfonts  # Run xfontsel to select fonts in X format, xlsfonts lists installed (cached) fonts
+pacman --quiet --noconfirm --needed -S \
+    xorg-server xorg-xrdb xorg-xinit xorg-xmodmap xorg-xprops libxrandr \
+    xorg-xfontsel xorg-xlsfonts  # Run xfontsel to select fonts in X format, xlsfonts lists installed (cached) fonts
 
 # XDG
 pacman --quiet --noconfirm --needed -S xdg-utils
 
 # light display manager with autologin
-# (I had trouble configuring newer versions of nodm)
-pacman --quiet --noconfirm --needed -S lightdm
-pacman --quiet --noconfirm --needed -S lightdm-gtk-greeter # it won't run
-    # without a greeter, even with autologin, but we already have GTK
-    # somewhere so this is lightweight
+pacman --quiet --noconfirm --needed -S \
+    lightdm \
+    lightdm-gtk-greeter \
+    accountsservice # needed for autologin
 systemctl enable lightdm.service
 
 echo "[Seat:*]
@@ -103,25 +104,25 @@ mkdir -p /usr/share/xsessions
 echo "[Desktop Entry]
 Name=XMonad
 Encoding=UTF-8
-Exec=/home/ondra/.start-xmonad.sh
+Exec=/home/ondra/dotfiles/start-xmonad.sh
 Type=XSession" > /usr/share/xsessions/xmonad.desktop
 
 
 # Interface
-pacman --quiet --noconfirm --needed -S kitty
-pacman --quiet --noconfirm --needed -S fzf
-pacman --quiet --noconfirm --needed -S rofi
-pacman --quiet --noconfirm --needed -S pass
-pacman --quiet --noconfirm --needed -S xclip
-pacman --quiet --noconfirm --needed -S numlockx  # utility to turn on numlock
-pacman --quiet --noconfirm --needed -S feh  # image viewer, shows background
+pacman --quiet --noconfirm --needed -S \
+    kitty \
+    fzf \
+    rofi \
+    pass \
+    xclip \
+    numlockx \
+    feh
 
 # Fonts
 pacman --quiet --noconfirm --needed -S ttf-hack ttf-ubuntu-font-family
 pacman --quiet --noconfirm --needed -S otf-ipafont # Japanese
 pacman --quiet --noconfirm --needed -S ttf-liberation  # used by chrome
 pacman --quiet --noconfirm --needed -S noto-fonts-emoji
-
 
 
 ## User tools
@@ -133,27 +134,7 @@ pacman --quiet --noconfirm --needed -S dos2unix
 # PDF
 pacman --quiet --noconfirm --needed -S zathura zathura-pdf-mupdf zathura-ps
 xdg-mime default zathura.desktop application/pdf
-pacman --quiet --noconfirm --needed -S xdotool  # Required to connect zathura with vim-latex
 
 # Music
 pacman --quiet --noconfirm --needed -S mpd
 pacman --quiet --noconfirm --needed -S ncmpc
-
-# IRC and chats
-pacman --quiet --noconfirm --needed -S irssi
-
-# Writing
-pacman --quiet --noconfirm --needed -S aspell aspell-en
-
-# Network
-pacman --quiet --noconfirm --needed -S openvpn
-pacman --quiet --noconfirm --needed -S net-tools
-pacman --quiet --noconfirm --needed -S bind-tools
-
-# General programming
-pacman --quiet --noconfirm --needed -S valgrind
-pacman --quiet --noconfirm --needed -S lua  # Used by vim plugin Shougo/neocomplete
-
-# Python
-pip install flake8  # syntax checking for python with syntastic
-pip install clf
