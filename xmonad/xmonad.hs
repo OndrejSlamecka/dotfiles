@@ -7,7 +7,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Util.Run (spawnPipe, hPutStrLn)
-import XMonad.Actions.Volume
+import XMonad.Actions.Volume (toggleMute, setMute, lowerVolume, raiseVolume)
 import XMonad.Actions.SpawnOn (manageSpawn, spawnOn)
 import qualified XMonad.StackSet as W (view, greedyView, shift)
 import Graphics.X11.ExtraTypes.XF86 -- multimedia keys
