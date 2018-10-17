@@ -34,6 +34,9 @@ trizen --noconfirm --needed -S powerline-fonts-git  # used by vim airline plugin
 trizen --noconfirm --needed -S google-chrome
 trizen --noconfirm --needed -S dropbox dropbox-cli
 
+# Use browserpass
+gpg --recv-keys EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
+trizen --noconfirm --needed -S browserpass
 
 ## Configure mpd (we're using per-user configuration)
 export CONF_MPD_MUSICDIR="$HOME/Music"

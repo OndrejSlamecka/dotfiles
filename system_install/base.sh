@@ -111,6 +111,7 @@ Type=XSession" > /usr/share/xsessions/xmonad.desktop
 pacman --quiet --noconfirm --needed -S kitty
 pacman --quiet --noconfirm --needed -S fzf
 pacman --quiet --noconfirm --needed -S rofi
+pacman --quiet --noconfirm --needed -S pass
 pacman --quiet --noconfirm --needed -S xclip
 pacman --quiet --noconfirm --needed -S numlockx  # utility to turn on numlock
 pacman --quiet --noconfirm --needed -S feh  # image viewer, shows background
