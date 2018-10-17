@@ -10,8 +10,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 numlockx &  # Toggle numlock
 #xkbcomp -I$HOME/dotfiles/xkb $HOME/dotfiles/xkb/cz-prog.xkb $DISPLAY -w 3
-# Change some key bindings (this is too subjective to be included in a keyboard layout)
-xmodmap ~/.Xmodmap
+# Change some key bindings
+xmodmap ~/dotfiles/Xmodmap
 
 unclutter &  # Hide mouse when unused
 

@@ -43,7 +43,7 @@ rm "$HOME/.config/fish/fishd.$HOSTNAME" && rmdir "$HOME/.config/fish"
 
 
 # Dotfiles in $HOME
-dotfiles="xmonad xkb Xmodmap start-xmonad.sh fonts vimrc latexmkrc gitconfig ghci"
+dotfiles="xmonad xkb start-xmonad.sh fonts vimrc latexmkrc gitconfig ghci"
 echo "Creating symbolic links in $HOME (only if they do not exist)..."
 make_links "$HOME" "$dotfiles"
 
