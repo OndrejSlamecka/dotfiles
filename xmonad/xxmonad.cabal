@@ -13,4 +13,5 @@ executable xmonad
                      , xmonad-contrib
                      , xmonad-extras
                      , X11
+                     , utf8-string
   default-language:    Haskell2010

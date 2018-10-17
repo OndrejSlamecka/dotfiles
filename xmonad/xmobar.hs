@@ -2,11 +2,11 @@
 -- $ echo -e "\uf027"   -- to print UTF char to be used by Font Awesome
 
 Config
-  { font = "xft:Ubuntu:size=10:antialias=true"
-  , additionalFonts  = ["xft:FontAwesome:size=11"]
+  { font = "xft:Ubuntu:size=5:antialias=true"
+  , additionalFonts  = ["xft:FontAwesome:size=5"]
   , bgColor          = "black"
   , fgColor          = "grey"
-  , alpha            = 80
+  , alpha            = 160
   , position         = Bottom
   , textOffset       = -1
   , iconOffset       = -1
