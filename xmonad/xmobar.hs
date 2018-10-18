@@ -3,7 +3,7 @@
 
 Config
   { font = "xft:Ubuntu:size=10:antialias=true"
-  , additionalFonts  = ["xft:FontAwesome-11"]
+  , additionalFonts  = ["xft:FontAwesome:size=11"]
   , bgColor          = "black"
   , fgColor          = "grey"
   , alpha            = 50
