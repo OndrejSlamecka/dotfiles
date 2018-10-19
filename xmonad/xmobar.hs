@@ -6,7 +6,7 @@ Config
   , additionalFonts  = ["xft:FontAwesome:size=11"]
   , bgColor          = "black"
   , fgColor          = "grey"
-  , alpha            = 50
+  , alpha            = 80
   , position         = Bottom
   , textOffset       = -1
   , iconOffset       = -1
@@ -19,10 +19,10 @@ Config
   , overrideRedirect = True
   , sepChar          = "%"
   , alignSep         = "}{"
-  , template = " %StdinReader% }{ <fn=1>%volume%</fn>   %date%  "
+  , template = " %StdinReader% }{ %volume%   %date%  "
   , commands =
     [ Run Date "%H:%M" "date" 10
-    , Run Com ".xmonad/volume.sh" [] "volume" 10
+    , Run Com "dotfiles/xmonad/volume.sh" [] "volume" 10
     , Run StdinReader
     ]
   }
