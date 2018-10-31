@@ -20,12 +20,12 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
 " Default indentation
-set expandtab
+set noexpandtab
 set tabstop=4
 set shiftwidth=4
 
 " Set textwidth and wrap
-set tw=72
+set tw=112
 set wrap
 
 
@@ -41,6 +41,9 @@ let g:airline#extensions#whitespace#enabled = 0
 
 call dein#add('scrooloose/nerdtree')
 map <Leader>n :NERDTreeToggle<CR>
+
+call dein#add('neomake/neomake')
+call neomake#configure#automake('w')
 
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('ctrlpvim/ctrlp.vim')
