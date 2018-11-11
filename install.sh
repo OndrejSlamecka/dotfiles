@@ -43,7 +43,7 @@ rm "$HOME/.config/fish/fishd.$HOSTNAME" && rmdir "$HOME/.config/fish"
 
 
 # Dotfiles in $HOME
-dotfiles="xmonad xkb fonts vimrc latexmkrc gitconfig ghci"
+dotfiles="xmonad xkb vimrc latexmkrc gitconfig ghci"
 echo "Creating symbolic links in $HOME (only if they do not exist)..."
 make_links "$HOME" "$dotfiles"
 
@@ -56,12 +56,6 @@ make_links "$XDG_CONFIG_HOME" "$configfiles"
 
 # Switch this repo to ssh -- some time after this setup a push may be needed
 git remote set-url origin git@github.com:OndrejSlamecka/dotfiles.git
-
-
-# X setup
-echo "Clearing font cache..."
-fc-cache ~/.fonts/
-
 
 # Installing nvim plugins
 echo "Installing nvim plugins..."

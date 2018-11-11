@@ -24,10 +24,10 @@ fi
 # Create displays
 if [ $active == "off" ] || [ $level == "0" ]
 then
-    echo "  "
+    echo "<fn=1></fn>  "
 elif [ "$level" -gt "50" ]
 then
-    echo ""
+    echo "$level%  <fn=1></fn>"
 else
-    echo " "
+    echo "$level%  <fn=1></fn> "
 fi

@@ -22,14 +22,15 @@ pikaur -Syu --aur
 gpg --recv-keys EB4F9E5A60D32232BB52150C12C87A28FEAC6B20 # browserpass's maintainer's
 
 pikaur --noconfirm --needed -S \
-	redshift-minimal \
-	unclutter-xfixes-git \
-	powerline-fonts-git \
-	google-chrome \
-	dropbox dropbox-cli \
-	keybase-bin \
-	browserpass \
-	stack-bin
+    redshift-minimal \
+    unclutter-xfixes-git \
+    powerline-fonts-git \
+    google-chrome \
+    dropbox dropbox-cli \
+    keybase-bin \
+    browserpass \
+    ttf-font-awesome \
+    stack-bin
 
 # Setup stack
 stack upgrade
