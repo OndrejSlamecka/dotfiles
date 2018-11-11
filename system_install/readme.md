@@ -2,7 +2,8 @@ Installing
 ----------
 
 When installing the operating system
-([guide](https://wiki.archlinux.org/index.php/installation_guide)) run
+([guide](https://wiki.archlinux.org/index.php/installation_guide); or
+[more detailed unofficial](https://github.com/maximbaz/dotfiles/blob/master/INSTALL_ARCH.md)) run
 this script after `chroot`-ing and skip the rest of the steps in the guide
 **except boot loader**, don't forget to install it!
 
