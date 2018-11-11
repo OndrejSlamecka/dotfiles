@@ -10,6 +10,10 @@ function fish_user_key_bindings
     bind . expand_dots
 end
 
+function take --argument-names 'dirname'
+    command mkdir $dirname; and cd $dirname
+end
+
 kitty + complete setup fish | source
 abbr kssh=kitty +kitten ssh
 
