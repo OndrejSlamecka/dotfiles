@@ -98,6 +98,9 @@ imap <F2> <ESC>:w<CR>i
 " System clipboard copy
 vmap <C-c> "+y
 
+" Go to tag in a new tab
+nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
+
 " Medium speed scrolling with shift and arrows
 nmap <S-Up> 5k
 nmap <S-Down> 5j
