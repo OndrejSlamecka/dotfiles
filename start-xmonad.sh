@@ -19,6 +19,6 @@ unclutter &  # Hide mouse when unused
 xset dpms 0 0 900  # Turn off the display after 15 minutes
 redshift &  # Start redshift
 
-feh --bg-fill ~/Pictures/fuji_autumn.jpg  # Set background
+feh --bg-fill $XDG_CONFIG_HOME/wallpaper.jpg
 
 exec -- ssh-agent xmonad

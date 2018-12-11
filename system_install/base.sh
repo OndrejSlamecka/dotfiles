@@ -119,7 +119,7 @@ pacman --quiet --noconfirm --needed -S \
     feh
 
 # Fonts
-pacman --quiet --noconfirm --needed -S ttf-hack ttf-ubuntu-font-family
+pacman --quiet --noconfirm --needed -S ttf-fira-code ttf-ubuntu-font-family
 pacman --quiet --noconfirm --needed -S otf-ipafont # Japanese
 pacman --quiet --noconfirm --needed -S ttf-liberation  # used by chrome
 pacman --quiet --noconfirm --needed -S noto-fonts-emoji
