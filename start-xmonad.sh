@@ -15,6 +15,7 @@ xmodmap ~/dotfiles/Xmodmap
 
 unclutter &  # Hide mouse when unused
 
+xset r rate 200 40 # delay, rate per second
 
 xset dpms 0 0 900  # Turn off the display after 15 minutes
 redshift &  # Start redshift
