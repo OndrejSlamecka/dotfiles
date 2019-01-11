@@ -1,38 +1,38 @@
 function install_git_abbr
     # Git -- https://gist.github.com/sonukapoor/3bd3268b948659d26540811c1491d5bb
-    abbr g='git'
-    abbr gst='git status'
-    abbr gd='git diff'
-    abbr gdc='git diff --cached'
-    abbr gg='git pull'
-    abbr gup='git pull --rebase'
-    abbr gp='git push'
-    abbr gf='git push --force'
-    abbr gd='git diff'
-    abbr gl='git log'
+    abbr --add g 'git'
+    abbr --add gst 'git status'
+    abbr --add gd 'git diff'
+    abbr --add gdc 'git diff --cached'
+    abbr --add gg 'git pull'
+    abbr --add gup 'git pull --rebase'
+    abbr --add gp 'git push'
+    abbr --add gf 'git push --force'
+    abbr --add gd 'git diff'
+    abbr --add gl 'git log'
 
-    abbr gr='git rebase -i (git merge-base HEAD origin/master)'
-    abbr grc='git rebase --continue'
-    abbr gra='git rebase --abort'
+    abbr --add gr 'git rebase -i (git merge-base HEAD origin/master)'
+    abbr --add grc 'git rebase --continue'
+    abbr --add gra 'git rebase --abort'
 
     function gdv
       git diff -w $argv | view -
     end
 
-    abbr gc='git commit -v'
-    abbr gc!='git commit -v --amend'
-    abbr gca='git commit -v -a'
-    abbr gca!='git commit -v -a --amend'
-    abbr gcmsg='git commit -m'
-    abbr gco='git checkout'
-    abbr gcm='git checkout master'
-    abbr gcb='git checkout -b'
-    abbr gb='git branch'
-    abbr gba='git branch -a'
-    abbr gcount='git shortlog -sn'
-    abbr gs='git status'
-    abbr ga='git add'
-    abbr gwc='git whatchanged -p --abbrev-commit --pretty=medium'
+    abbr --add gc 'git commit -v'
+    abbr --add gc! 'git commit -v --amend'
+    abbr --add gca 'git commit -v -a'
+    abbr --add gca! 'git commit -v -a --amend'
+    abbr --add gcmsg 'git commit -m'
+    abbr --add gco 'git checkout'
+    abbr --add gcm 'git checkout master'
+    abbr --add gcb 'git checkout -b'
+    abbr --add gb 'git branch'
+    abbr --add gba 'git branch -a'
+    abbr --add gcount 'git shortlog -sn'
+    abbr --add gs 'git status'
+    abbr --add ga 'git add'
+    abbr --add gwc 'git whatchanged -p --abbrev-commit --pretty=medium'
 
     # Will cd into the top of the current repository or submodule.
     alias grt='cd (git rev-parse --show-toplevel or echo ".")'
@@ -50,8 +50,8 @@ function install_git_abbr
       echo (git remote -v | cut -d':' -f 2)
     end
 
-    abbr ggpull='git pull origin (current_branch)'
-    abbr ggpur='git pull --rebase origin (current_branch)'
-    abbr ggpush='git push origin (current_branch)'
-    abbr ggpnp='git pull origin (current_branch); and git push origin (current_branch)'
+    abbr --add ggpull 'git pull origin (current_branch)'
+    abbr --add ggpur 'git pull --rebase origin (current_branch)'
+    abbr --add ggpush 'git push origin (current_branch)'
+    abbr --add ggpnp 'git pull origin (current_branch); and git push origin (current_branch)'
 end
