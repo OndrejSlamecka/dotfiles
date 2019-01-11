@@ -16,3 +16,9 @@ nm <buffer> <silent> <leader>qa :PaddImportQualifications<CR>
 nm <buffer> <silent> <leader>g :Pgoto<CR>
 nm <buffer> <silent> <leader>p :Pursuit<CR>
 nm <buffer> <silent> <leader>T :Ptype<CR>
+
+" Conceal
+setlocal conceallevel=2
+hi link hsNiceOperator Operator
+hi! link Conceal Operator
+syntax match hsNiceOperator "\\\ze[[:alpha:][:space:]_([]" conceal cchar=λ
