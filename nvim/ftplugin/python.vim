@@ -1,5 +1,8 @@
+" Stops overriding of indent settings
+let g:python_recommended_style = 0
+
+setlocal noexpandtab
 setlocal tabstop=4
-setlocal expandtab
 setlocal softtabstop=4
 setlocal shiftwidth=4
 
