@@ -24,6 +24,7 @@ xset r rate 200 40 # delay, rate per second
 xset dpms 0 0 900  # Turn off the display after 15 minutes
 redshift &  # Start redshift
 dunst &  # Notification daemon
+light-locker &  # Screen locking integrated with LightDM
 
 feh --bg-fill ~/dotfiles/wallpaper.jpg
 

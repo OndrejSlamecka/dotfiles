@@ -78,6 +78,9 @@ main = do
       , ((0, xF86XK_AudioLowerVolume), void $ setMute True >> lowerVolume 3)
       , ((0, xF86XK_AudioRaiseVolume), void $ setMute True >> raiseVolume 3)
       , ((0,        xF86XK_AudioMute), void   toggleMute)
+
+      -- lock
+      , ((modm,                 xK_g), spawn "light-locker-command -l")
       ]
       ++
       -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3

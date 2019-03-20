@@ -90,6 +90,7 @@ pacman --quiet --noconfirm --needed -S xdg-utils
 pacman --quiet --noconfirm --needed -S \
     lightdm \
     lightdm-gtk-greeter \
+    light-locker \
     accountsservice # needed for autologin
 systemctl enable lightdm.service
 
