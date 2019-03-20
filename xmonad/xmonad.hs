@@ -35,7 +35,7 @@ main = do
         tall = ResizableTall 1 (3/100) (1/2) []
         wide = Mirror tall
 
-    myStartupHook = spawnOn "2" "google-chrome-stable"
+    myStartupHook = spawnOn "2" "firefox"
                     <+> spawnOn "3" "audacious"
                     <+> windows (W.view "2")
 

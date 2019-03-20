@@ -25,7 +25,6 @@ pikaur --noconfirm --needed -S \
     redshift-minimal \
     unclutter-xfixes-git \
     powerline-fonts-git \
-    google-chrome \
     keybase-bin \
     browserpass \
     ttf-font-awesome \

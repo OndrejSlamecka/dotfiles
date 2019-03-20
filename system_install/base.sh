@@ -127,6 +127,8 @@ pacman --quiet --noconfirm --needed -S noto-fonts-emoji
 
 
 ## User tools
+pacman --quiet --noconfirm --needed -S firefox
+
 # Text editing
 pacman --quiet --noconfirm --needed -S neovim
 pip install neovim
