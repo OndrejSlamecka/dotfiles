@@ -15,7 +15,7 @@ function take --argument-names 'dirname'
 end
 
 kitty + complete setup fish | source
-abbr kssh=kitty +kitten ssh
+abbr --add kssh 'kitty +kitten ssh'
 
 # See functions directory for the following
 install_git_abbr
