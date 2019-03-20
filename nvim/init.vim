@@ -47,7 +47,10 @@ call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('godlygeek/tabular')
 call dein#add('tpope/vim-fugitive')
 
-" Colors
+call dein#add('ruanyl/vim-gh-line')
+let g:gh_git_remote = "vimtrick"
+
+" Colors -- try https://github.com/Nequo/vim-allomancer when you get bored of this
 call dein#add('dracula/vim')
 color dracula
 
