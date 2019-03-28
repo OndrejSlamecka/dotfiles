@@ -39,7 +39,8 @@ echo "
 "
 
 # Clear fish cache file (I _think_ it should be stored in `~/.cache`)
-rm "$HOME/.config/fish/fishd.$HOSTNAME" && rmdir "$HOME/.config/fish"
+rm -f "$HOME/.config/fish/fishd.$HOSTNAME"
+test -L "$HOME/.config/fish" || rmdir "$HOME/.config/fish"
 
 
 # Dotfiles in $HOME
