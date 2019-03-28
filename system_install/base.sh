@@ -116,6 +116,7 @@ pacman --quiet --noconfirm --needed -S \
     pass \
     xclip \
     numlockx \
+    dunst \
     feh
 
 # Fonts
