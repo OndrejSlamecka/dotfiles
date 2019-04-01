@@ -1,7 +1,7 @@
 :set +m
 :set +t
-:set prompt  "λ: "
-:set prompt2 "λ| "
+-- :set prompt  "λ: "
+-- :set prompt2 "λ| "
 
 :def hoogle  \ q -> return $ ":! hoogle --count=15 \"" ++ q ++ "\""
 :def pf \ f -> return $ ":! pointfree \"" ++ f ++ "\""

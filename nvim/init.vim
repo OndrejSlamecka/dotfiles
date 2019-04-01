@@ -58,9 +58,10 @@ call dein#add('dracula/vim')
 color dracula
 
 " Haskell
-call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['hs']})
-call dein#add('eagletmt/neco-ghc', {'on_ft': ['hs']})
-call dein#add('neovimhaskell/haskell-vim', {'on_ft': ['hs']})
+call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['haskell']})
+call dein#add('eagletmt/neco-ghc', {'on_ft': ['haskell']})
+call dein#add('neovimhaskell/haskell-vim', {'on_ft': ['haskell']})
+call dein#add('parsonsmatt/intero-neovim', {'on_ft': ['haskell']})
 
 " PureScript
 call dein#add('purescript-contrib/purescript-vim', {'on_ft': ['purescript']})
