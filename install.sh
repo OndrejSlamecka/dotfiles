@@ -54,6 +54,8 @@ configfiles="path.sh fish rofi nvim redshift.conf zathura trizen kitty dunst"
 echo "Creating symbolic links in $XDG_CONFIG_HOME (only if they do not exist)..."
 make_links "$XDG_CONFIG_HOME" "$configfiles"
 
+# Find Firefox profiles (characterised by -name "*.*" -type d) and link user.js files
+find ~/.mozilla/firefox -maxdepth 1 -name "*.*" -type d -exec sh -c '[ -L "{}/user.js" ] || ln -s "~/dotfiles/firefox/user.js" "{}/user.js"' \;
 
 # Switch this repo to ssh -- some time after this setup a push may be needed
 git remote set-url origin git@github.com:OndrejSlamecka/dotfiles.git
