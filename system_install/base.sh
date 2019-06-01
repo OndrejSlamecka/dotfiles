@@ -113,11 +113,11 @@ pacman --quiet --noconfirm --needed -S \
     kitty \
     fzf \
     rofi \
-    pass \
     xclip \
     numlockx \
     dunst \
-    feh
+    feh \
+    x11-ssh-askpass
 
 # Fonts
 pacman --quiet --noconfirm --needed -S ttf-fira-code ttf-ubuntu-font-family

@@ -1,6 +1,7 @@
 set fish_greeting (date)
 
 set -gx EDITOR nvim
+set -gx SUDO_ASKPASS /usr/lib/ssh/x11-ssh-askpass
 
 function fish_user_key_bindings
 	fzf_key_bindings
