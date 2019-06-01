@@ -26,7 +26,6 @@ pikaur --noconfirm --needed -S \
     unclutter-xfixes-git \
     powerline-fonts-git \
     keybase-bin \
-    browserpass \
     ttf-font-awesome \
     stack-bin
 

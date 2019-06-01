@@ -131,6 +131,9 @@ pacman --quiet --noconfirm --needed -S noto-fonts-emoji
 ## User tools
 pacman --quiet --noconfirm --needed -S firefox
 
+# Password manager
+pacman --quiet --noconfirm --needed -S pass browserpass browserpass-firefox
+
 # Text editing
 pacman --quiet --noconfirm --needed -S neovim
 pip install neovim
