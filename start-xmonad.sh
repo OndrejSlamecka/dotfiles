@@ -8,6 +8,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 #xrdb -merge $HOME/.Xresources  # X settings
 #xset +fp $HOME/.fonts  # X fonts
 
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 numlockx &  # Toggle numlock
 #xkbcomp -I$HOME/dotfiles/xkb $HOME/dotfiles/xkb/cz-prog.xkb $DISPLAY -w 3
 # Change some key bindings

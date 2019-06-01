@@ -51,6 +51,7 @@ pacman --quiet --noconfirm --needed -S \
     openssh ca-certificates \
     atool tar gzip zip unzip unrar \
     python3 python-pip \
+    polkit
 
 # USB auto-mount
 pacman --quiet --noconfirm --needed -S udevil udisks2 ntfs-3g
@@ -117,7 +118,8 @@ pacman --quiet --noconfirm --needed -S \
     numlockx \
     dunst \
     feh \
-    x11-ssh-askpass
+    x11-ssh-askpass \
+    polkit-gnome
 
 # Fonts
 pacman --quiet --noconfirm --needed -S ttf-fira-code ttf-ubuntu-font-family
