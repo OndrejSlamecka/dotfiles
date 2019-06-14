@@ -6,7 +6,7 @@ setlocal expandtab
 setlocal cindent
 
 let g:neomake_cpp_gcc_maker = {
-            \ 'args': ['-std=c++11']
+            \ 'args': ['-std=c++17', '-Wall', '-Wextra']
             \ }
 
 let g:neomake_cpp_make_maker = {
