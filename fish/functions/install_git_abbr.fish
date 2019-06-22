@@ -33,6 +33,7 @@ function install_git_abbr
     abbr --add gs 'git status'
     abbr --add ga 'git add'
     abbr --add gwc 'git whatchanged -p --abbrev-commit --pretty=medium'
+    abbr --add gcp 'git cherry-pick'
 
     # Will cd into the top of the current repository or submodule.
     alias grt='cd (git rev-parse --show-toplevel or echo ".")'
