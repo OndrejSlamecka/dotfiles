@@ -4,3 +4,5 @@
 	signingkey = 5172FB9CFCC244836C42AB0DB681321E9F5769D1
 [push]
     default = current
+[alias]
+	logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
