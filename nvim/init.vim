@@ -45,10 +45,13 @@ map <Leader>n :NERDTreeToggle<CR>
 call dein#add('neomake/neomake')
 call neomake#configure#automake('w')
 
+call dein#add('autozimu/LanguageClient-neovim', {'rev': 'next', 'build': 'bash install.sh'})
+
 call dein#add('scrooloose/nerdcommenter')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('godlygeek/tabular')
 call dein#add('tpope/vim-fugitive')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
 call dein#add('ruanyl/vim-gh-line')
 let g:gh_git_remote = "vimtrick"
@@ -61,7 +64,6 @@ color dracula
 call dein#add('eagletmt/ghcmod-vim', {'on_ft': ['haskell']})
 call dein#add('eagletmt/neco-ghc', {'on_ft': ['haskell']})
 call dein#add('neovimhaskell/haskell-vim', {'on_ft': ['haskell']})
-"call dein#add('parsonsmatt/intero-neovim', {'on_ft': ['haskell']})
 
 " PureScript
 call dein#add('purescript-contrib/purescript-vim', {'on_ft': ['purescript']})
@@ -89,6 +91,18 @@ filetype plugin indent on
 if dein#check_install()
   call dein#install()
 endif
+
+
+"" LanguageClient
+let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
+nnoremap <F3> :call LanguageClient_contextMenu()<CR>
+map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
+map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
+map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
+map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+map <Leader>lb :call LanguageClient#textDocument_references()<CR>
+map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
+map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 
 
 "" COMMANDS

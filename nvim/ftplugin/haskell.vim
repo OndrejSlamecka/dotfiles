@@ -69,38 +69,3 @@ function! Pointful()
   call setline('.', split(system('pointful '.shellescape(join(getline(a:firstline, a:lastline), "\n"))), "\n"))
 endfunction
 vnoremap <silent> <leader>h> :call Pointful()<CR>
-
-" == intero ==
-
-" Automatically reload on save
-"au BufWritePost *.hs InteroReload
-
-"" Lookup the type of expression under the cursor
-"nmap <silent> <leader>t <Plug>InteroGenericType
-"nmap <silent> <leader>T <Plug>InteroType
-"" Insert type declaration
-"nnoremap <silent> <leader>ni :InteroTypeInsert<CR>
-"" Show info about expression or type under the cursor
-"nnoremap <silent> <leader>i :InteroInfo<CR>
-
-"" Open/Close the Intero terminal window
-"nnoremap <silent> <leader>nn :InteroOpen<CR>
-"nnoremap <silent> <leader>nh :InteroHide<CR>
-
-"" Reload the current file into REPL
-"nnoremap <silent> <leader>nf :InteroLoadCurrentFile<CR>
-"" Jump to the definition of an identifier
-"nnoremap <silent> <leader>ng :InteroGoToDef<CR>
-"" Evaluate an expression in REPL
-"nnoremap <silent> <leader>ne :InteroEval<CR>
-
-"" Start/Stop Intero
-"nnoremap <silent> <leader>ns :InteroStart<CR>
-"nnoremap <silent> <leader>nk :InteroKill<CR>
-
-"" Reboot Intero, for when dependencies are added
-"nnoremap <silent> <leader>nr :InteroKill<CR> :InteroOpen<CR>
-
-"" Managing targets
-"" Prompts you to enter targets (no silent):
-"nnoremap <leader>nt :InteroSetTargets<CR>
