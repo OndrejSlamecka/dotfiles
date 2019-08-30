@@ -12,7 +12,7 @@ noremap ;; ;
 " Wildmenu
 set wildmenu
 set wildchar=<S-Tab>
-set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
+set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox,*.pyc,*.beam
 set wildmode=list:longest,full
 
 " Backspace behavior
