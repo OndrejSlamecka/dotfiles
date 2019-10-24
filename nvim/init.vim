@@ -42,16 +42,18 @@ let g:airline#extensions#whitespace#enabled = 0
 call dein#add('scrooloose/nerdtree')
 map <Leader>n :NERDTreeToggle<CR>
 
-call dein#add('neomake/neomake')
-call neomake#configure#automake('w')
+"call dein#add('neomake/neomake')
+"call neomake#configure#automake('w')
 
 call dein#add('autozimu/LanguageClient-neovim', {'rev': 'next', 'build': 'bash install.sh'})
 
 call dein#add('scrooloose/nerdcommenter')
+call dein#add('tpope/vim-abolish')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('godlygeek/tabular')
 call dein#add('tpope/vim-fugitive')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('Shougo/denite.nvim')
 
 call dein#add('ruanyl/vim-gh-line')
 let g:gh_git_remote = "vimtrick"
@@ -94,7 +96,9 @@ endif
 
 
 "" LanguageClient
-let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
+let g:LanguageClient_serverCommands = {
+	\ 'haskell': ['hie-wrapper']
+	\ }
 nnoremap <F3> :call LanguageClient_contextMenu()<CR>
 map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
 map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
@@ -103,6 +107,35 @@ map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
 map <Leader>lb :call LanguageClient#textDocument_references()<CR>
 map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
 map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
+
+"" Denite
+map <leader><leader> :DeniteCursorWord buffer tag grep line mark<cr>
+
+call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
+
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+		\ ['-i', '--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
 
 
 "" COMMANDS

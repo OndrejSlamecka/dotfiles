@@ -54,3 +54,6 @@ mkdir -p "$CONF_MPD_HOMEDIR/playlists"
 cd ~/tmp && git clone https://github.com/ronalde/mpd-configure.git && cd ~/tmp/mpd-configure
 bash mpd-configure -n -o "$HOME/.config/mpd/mpd.conf"
 systemctl enable "mpd.service"
+
+# Neovim Python support
+pip3 install --user pynvim
