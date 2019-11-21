@@ -1,10 +1,6 @@
-resolver: lts-13.15
+resolver: lts-14.15
 packages:
 - '.'
-extra-deps:
-- xmonad-0.15
-- xmonad-contrib-0.15
-- xmonad-extras-0.15
-- alsa-mixer-0.2.0.3
+extra-deps: []
 flags: {}
 extra-package-dbs: []

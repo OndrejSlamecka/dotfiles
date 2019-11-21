@@ -36,7 +36,7 @@ main = do
         wide = Mirror tall
 
     myStartupHook = spawnOn "2" "firefox"
-                    <+> spawnOn "3" "audacious"
+                    <+> spawnOn "3" "kitty hmc"
                     <+> windows (W.view "2")
 
     myKeys conf@XConfig { modMask = modm } = Data.Map.fromList $

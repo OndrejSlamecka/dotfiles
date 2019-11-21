@@ -12,7 +12,7 @@ function fish_user_key_bindings
 end
 
 function take --argument-names 'dirname'
-    command mkdir $dirname; and cd $dirname
+    command mkdir -p $dirname; and cd $dirname
 end
 
 kitty + complete setup fish | source
