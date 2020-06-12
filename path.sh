@@ -6,4 +6,4 @@ export XDG_CACHE_HOME=$HOME/.cache
 
 NPM_PACKAGES="${HOME}/.local/npm-packages"
 
-export PATH="${PATH}:$NPM_PACKAGES/bin:$HOME/.local/bin"
+export PATH="${PATH}:$NPM_PACKAGES/bin:$HOME/.local/bin:$HOME/.cargo/bin"

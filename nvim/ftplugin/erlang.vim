@@ -2,6 +2,7 @@ setlocal noexpandtab
 setlocal softtabstop=4
 setlocal shiftwidth=4
 
+setlocal iskeyword+=: " makes tag jump (C-]) work with modules
 
 " Vim indent file
 " Language:     Erlang

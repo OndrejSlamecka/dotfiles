@@ -54,6 +54,7 @@ call dein#add('godlygeek/tabular')
 call dein#add('tpope/vim-fugitive')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('Shougo/denite.nvim')
+call dein#add('jremmen/vim-ripgrep')
 
 call dein#add('ruanyl/vim-gh-line')
 let g:gh_git_remote = "vimtrick"
@@ -94,7 +95,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-
 "" LanguageClient
 let g:LanguageClient_serverCommands = {
 	\ 'haskell': ['hie-wrapper']
@@ -109,7 +109,8 @@ map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
 map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 
 "" Denite
-map <leader><leader> :DeniteCursorWord buffer tag grep line mark<cr>
+map <leader>; :DeniteCursorWord buffer tag grep line mark<cr>
+map <leader><leader> :Denite buffer<cr>
 
 call denite#custom#var('file/rec', 'command', ['rg', '--files', '--glob', '!.git'])
 
@@ -148,6 +149,9 @@ vmap <C-c> "+y
 
 " Go to tag in a new tab
 nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
+
+" Search the word under the cursor using ripgrep
+nnoremap <leader>rg viw"ry:Rg <C-r>r<CR>
 
 " Medium speed scrolling with shift and arrows
 nmap <S-Up> 5k
